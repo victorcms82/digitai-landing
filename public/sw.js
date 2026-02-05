@@ -1,4 +1,4 @@
-const CACHE_NAME = 'digitai-v1';
+const CACHE_NAME = 'digitai-v2';
 const OFFLINE_URL = '/offline';
 
 // Assets to cache immediately on install

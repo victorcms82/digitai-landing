@@ -116,13 +116,10 @@ export function usePushNotifications() {
     try {
       const registration = await navigator.serviceWorker.ready
 
-      // In production, you'd use your VAPID public key here
+      const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || 'BBmnvdjL6xhJxbwDnyhsmsX2AX6UA4LZk3GbkiGCZYw3fV0wPGBplLsPCmPlJ3D1Mp8OH2B9JTXLbsDABnWohjw'
       const sub = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(
-          // This is a placeholder - you need to generate your own VAPID keys
-          'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U'
-        ),
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
       })
 
       setSubscription(sub)
