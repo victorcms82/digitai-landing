@@ -1,24 +1,56 @@
 {
-  "name": "DigitAI - Agentes de IA",
+  "name": "DigitAI - Agentes de IA para WhatsApp",
   "short_name": "DigitAI",
-  "description": "Agentes de IA para WhatsApp que atendem, agendam e convertem clientes automaticamente",
+  "description": "Agentes de IA que atendem, agendam e convertem seus clientes automaticamente via WhatsApp",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#2563eb",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Criar Agente",
+      "short_name": "Demo",
+      "description": "Criar e testar seu agente de IA",
+      "url": "/demo",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

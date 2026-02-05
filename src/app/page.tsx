@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { InstallBanner } from "@/components/install-banner"
 import { MessageSquare, Zap, Clock, TrendingUp, CheckCircle2, ArrowRight, Phone, Calendar, Brain, BarChart3 } from "lucide-react"
 
 const features = [
@@ -196,11 +197,14 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-6 sm:py-8">
+      <footer className="border-t border-slate-800 py-6 sm:py-8 pb-20">
         <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-slate-500">
           <p>&copy; 2025 DigitAI - Evolute Digital. Todos os direitos reservados.</p>
         </div>
       </footer>
+
+      {/* Install Banner */}
+      <InstallBanner />
     </div>
   )
 }
