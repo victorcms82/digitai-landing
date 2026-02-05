@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate PWA Icons</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #1e1e1e; color: white; }
+    canvas { border: 1px solid #333; margin: 10px; }
+    button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+    .icons { display: flex; gap: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <h1>PWA Icon Generator - DigitAI</h1>
+  <p>Clique nos botões para baixar os ícones:</p>
+
+  <div class="icons">
+    <div>
+      <canvas id="icon192" width="192" height="192"></canvas>
+      <br>
+      <button onclick="download('icon192', 'icon-192.png')">Download 192x192</button>
+    </div>
+    <div>
+      <canvas id="icon512" width="512" height="512"></canvas>
+      <br>
+      <button onclick="download('icon512', 'icon-512.png')">Download 512x512</button>
+    </div>
+  </div>
+
+  <script>
+    function drawIcon(canvasId, size) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#1e40af');
+      gradient.addColorStop(1, '#0891b2');
+      ctx.fillStyle = gradient;
+
+      // Rounded rectangle
+      const radius = size * 0.2;
+      ctx.beginPath();
+      ctx.roundRect(0, 0, size, size, radius);
+      ctx.fill();
+
+      // Letter "D" stylized
+      ctx.fillStyle = 'white';
+      ctx.font = `bold ${size * 0.5}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('D', size * 0.42, size * 0.52);
+
+      // AI dots
+      ctx.fillStyle = '#22d3ee';
+      const dotSize = size * 0.06;
+      ctx.beginPath();
+      ctx.arc(size * 0.7, size * 0.35, dotSize, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(size * 0.78, size * 0.5, dotSize * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(size * 0.7, size * 0.65, dotSize * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function download(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Draw icons on load
+    drawIcon('icon192', 192);
+    drawIcon('icon512', 512);
+  </script>
+</body>
+</html>
