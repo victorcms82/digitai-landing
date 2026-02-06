@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { PWAProvider } from "@/components/pwa-provider";
+import { InstallFab } from "@/components/install-fab";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -80,6 +81,7 @@ export default function RootLayout({
       >
         <PWAProvider>
           {children}
+          <InstallFab />
         </PWAProvider>
       </body>
     </html>
