@@ -68,7 +68,7 @@ GOOGLE_GENERATIVE_AI_API_KEY=   # API do Gemini para demo
 
 | Projeto | Relação |
 |---------|---------|
-| `saas-multi-tenant` | Sistema principal (produto) |
+| `digitai-ai-agents-platform` | Plataforma de agentes IA (produto) |
 | `projects-hub` | Gerenciador central |
 | **Este (digitai-landing)** | Landing/demo para prospects |
 
