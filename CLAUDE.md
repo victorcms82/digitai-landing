@@ -2,14 +2,6 @@
 
 Este arquivo fornece orientações para o Claude Code ao trabalhar neste repositório.
 
-## Data e Hora Local
-
-**IMPORTANTE:** Sempre verifique a data e hora local do usuário antes de trabalhar:
-```bash
-date
-```
-Isso ajuda a contextualizar commits, changelogs e documentação com datas corretas.
-
 ## Visão Geral
 
 Landing page e demo interativo para captura de leads da Digitai.
@@ -83,11 +75,3 @@ GOOGLE_GENERATIVE_AI_API_KEY=   # API do Gemini para demo
 
 Push para `main` → Deploy automático na Vercel
 
-## REGRAS DE PERMISSÕES (.claude/settings.local.json)
-
-O arquivo .claude/settings.local.json já contém wildcards genéricos como `Bash(git *)`, `Bash(npm *)`, etc. que cobrem TODOS os comandos desses prefixos.
-
-**REGRAS OBRIGATÓRIAS:**
-1. NUNCA adicione entradas específicas no settings.local.json — os wildcards já cobrem tudo
-2. Se um comando começa com um prefixo já permitido, apenas EXECUTE
-3. NUNCA salve comandos longos como permissão
