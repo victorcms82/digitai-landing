@@ -8,7 +8,8 @@ import {
   GraduationCap, Utensils, Home, Send, User, Loader2,
   ClipboardList, FileText, Calculator, Headphones, Package,
   Calendar, ChevronDown, Sparkles, ArrowRight, CheckCircle2,
-  Briefcase, Truck, HardHat, Heart, DollarSign, ChevronUp
+  Briefcase, Truck, HardHat, Heart, DollarSign, ChevronUp,
+  Mail, Phone, Globe, Instagram
 } from "lucide-react"
 
 // ─── Agent Prompts ───
@@ -356,6 +357,50 @@ export default function ShowcasePage() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const chatSectionRef = useRef<HTMLDivElement>(null)
 
+  // Email demo state
+  const [demoMode, setDemoMode] = useState<"chat" | "email">("chat")
+  const [emailForm, setEmailForm] = useState({ name: "", email: "", subject: "", body: "" })
+  const [emailSending, setEmailSending] = useState(false)
+  const [emailResponse, setEmailResponse] = useState<string | null>(null)
+  const [emailSent, setEmailSent] = useState(false)
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!emailForm.email || !emailForm.body || emailSending) return
+    setEmailSending(true)
+    setEmailResponse(null)
+    setEmailSent(true)
+
+    try {
+      const response = await fetch("/api/email-demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          senderEmail: emailForm.email,
+          senderName: emailForm.name || emailForm.email.split("@")[0],
+          subject: emailForm.subject || "Contato via Showcase",
+          body: emailForm.body,
+        }),
+      })
+      const data = await response.json()
+      if (data.agentResponse) {
+        setEmailResponse(data.agentResponse)
+      } else {
+        setEmailResponse("Erro ao processar email. Tente novamente.")
+      }
+    } catch {
+      setEmailResponse("Erro de conexão. Tente novamente.")
+    } finally {
+      setEmailSending(false)
+    }
+  }
+
+  const resetEmailDemo = () => {
+    setEmailForm({ name: "", email: "", subject: "", body: "" })
+    setEmailResponse(null)
+    setEmailSent(false)
+  }
+
   const switchAgent = (agent: AgentDef) => {
     if (agent.id === activeAgent.id) return
     setActiveAgent(agent)
@@ -604,6 +649,57 @@ export default function ShowcasePage() {
         </div>
       </section>
 
+      {/* ════════ CHANNELS ════════ */}
+      <section className="py-12 sm:py-16 border-t border-slate-800/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Todos os{" "}
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                canais.
+              </span>
+              {" "}Uma conversa.
+            </h2>
+            <p className="mx-auto max-w-2xl text-slate-400 text-lg">
+              O mesmo agente responde em todos os canais, com o mesmo contexto e inteligência.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { icon: Phone, name: "WhatsApp", desc: "API oficial da Meta (WABA). Selo verde, criptografia, sem risco de banimento.", color: "from-green-500 to-emerald-500", badge: "Principal" },
+              { icon: Globe, name: "Webchat", desc: "Widget no seu site. Instalação com 1 linha de código. Funciona em qualquer página.", color: "from-blue-500 to-cyan-500", badge: null },
+              { icon: Instagram, name: "Instagram", desc: "DMs do Instagram processadas pelo agente. Mesma inteligência, canal diferente.", color: "from-pink-500 to-purple-500", badge: null },
+              { icon: Mail, name: "Email", desc: "Recebe e responde emails automaticamente. Threading completo, como uma pessoa real.", color: "from-orange-500 to-amber-500", badge: "Novo" },
+            ].map((channel) => (
+              <div
+                key={channel.name}
+                className="group relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-slate-700 hover:bg-slate-900/80 text-center"
+              >
+                {channel.badge && (
+                  <span className={`absolute -top-2.5 right-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                    channel.badge === "Novo" ? "bg-orange-500/20 text-orange-400 border border-orange-500/30" : "bg-green-500/20 text-green-400 border border-green-500/30"
+                  }`}>
+                    {channel.badge}
+                  </span>
+                )}
+                <div className={`inline-flex rounded-xl bg-gradient-to-br ${channel.color} p-3 mb-4`}>
+                  <channel.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">{channel.name}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{channel.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-slate-500 text-sm">
+              O cliente pode começar pelo WhatsApp e continuar por email — o agente mantém todo o contexto.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ════════ DIFFERENTIALS ════════ */}
       <section className="py-12 sm:py-16 border-t border-slate-800/50">
         <div className="container mx-auto px-4">
@@ -639,7 +735,7 @@ export default function ShowcasePage() {
         </div>
       </section>
 
-      {/* ════════ LIVE CHAT DEMO ════════ */}
+      {/* ════════ LIVE DEMO ════════ */}
       <section ref={chatSectionRef} className="py-12 sm:py-16 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent" />
         <div className="relative z-10 container mx-auto px-4">
@@ -651,129 +747,294 @@ export default function ShowcasePage() {
               </span>
             </h2>
             <p className="mx-auto max-w-xl text-slate-400 text-lg">
-              Dois nichos diferentes, mesma plataforma. Escolha um agente e converse.
+              Dois canais diferentes, mesma inteligência. Converse por chat ou envie um email.
             </p>
           </div>
 
-          {/* Agent Toggle */}
-          <div className="flex justify-center gap-3 mb-6">
-            {agents.map((agent) => (
-              <button
-                key={agent.id}
-                onClick={() => switchAgent(agent)}
-                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
-                  activeAgent.id === agent.id
-                    ? `bg-gradient-to-r ${agent.color} text-white shadow-lg`
-                    : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
-                }`}
-              >
-                <Bot className="h-4 w-4" />
-                {agent.name} — {agent.niche}
-              </button>
-            ))}
+          {/* Demo Mode Toggle */}
+          <div className="flex justify-center gap-2 mb-6">
+            <button
+              onClick={() => setDemoMode("chat")}
+              className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                demoMode === "chat"
+                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
+                  : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+              }`}
+            >
+              <MessageSquare className="h-4 w-4" />
+              Chat ao vivo
+            </button>
+            <button
+              onClick={() => setDemoMode("email")}
+              className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                demoMode === "email"
+                  ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/20"
+                  : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+              }`}
+            >
+              <Mail className="h-4 w-4" />
+              Email
+              <span className="rounded-full bg-orange-500/20 border border-orange-500/30 px-1.5 py-0 text-[10px] font-bold text-orange-300 uppercase">Novo</span>
+            </button>
           </div>
 
-          <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
-            {/* Chat Header */}
-            <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
-                <Bot className="h-5 w-5 text-white" />
+          {/* ─── CHAT DEMO ─── */}
+          {demoMode === "chat" && (
+            <>
+              {/* Agent Toggle */}
+              <div className="flex justify-center gap-3 mb-6">
+                {agents.map((agent) => (
+                  <button
+                    key={agent.id}
+                    onClick={() => switchAgent(agent)}
+                    className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                      activeAgent.id === agent.id
+                        ? `bg-gradient-to-r ${agent.color} text-white shadow-lg`
+                        : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+                    }`}
+                  >
+                    <Bot className="h-4 w-4" />
+                    {agent.name} — {agent.niche}
+                  </button>
+                ))}
               </div>
-              <div>
-                <h3 className="font-semibold text-white">{activeAgent.name} — {activeAgent.niche}</h3>
-                <div className="flex items-center gap-1.5">
-                  <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-xs text-slate-400">Online agora</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Messages */}
-            <div className="h-[400px] overflow-y-auto p-4 space-y-4 scroll-smooth">
-              {messages.map((msg, i) => (
-                <div key={i} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  {msg.role === "assistant" && (
-                    <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
-                      <Bot className="h-4 w-4 text-white" />
-                    </div>
-                  )}
-                  <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
-                    msg.role === "user"
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-100"
-                  }`}>
-                    {msg.content}
+              <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
+                {/* Chat Header */}
+                <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
+                    <Bot className="h-5 w-5 text-white" />
                   </div>
-                  {msg.role === "user" && (
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-700">
-                      <User className="h-4 w-4 text-white" />
+                  <div>
+                    <h3 className="font-semibold text-white">{activeAgent.name} — {activeAgent.niche}</h3>
+                    <div className="flex items-center gap-1.5">
+                      <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-xs text-slate-400">Online agora</span>
                     </div>
-                  )}
+                  </div>
                 </div>
-              ))}
-              {isLoading && (
-                <div className="flex gap-2.5">
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
-                    <Bot className="h-4 w-4 text-white" />
-                  </div>
-                  <div className="rounded-2xl bg-slate-800 px-4 py-3">
-                    <div className="flex gap-1">
-                      <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" />
-                      <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-                      <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+
+                {/* Messages */}
+                <div className="h-[400px] overflow-y-auto p-4 space-y-4 scroll-smooth">
+                  {messages.map((msg, i) => (
+                    <div key={i} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                      {msg.role === "assistant" && (
+                        <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
+                          <Bot className="h-4 w-4 text-white" />
+                        </div>
+                      )}
+                      <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
+                        msg.role === "user"
+                          ? "bg-blue-600 text-white"
+                          : "bg-slate-800 text-slate-100"
+                      }`}>
+                        {msg.content}
+                      </div>
+                      {msg.role === "user" && (
+                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-700">
+                          <User className="h-4 w-4 text-white" />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                  {isLoading && (
+                    <div className="flex gap-2.5">
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
+                        <Bot className="h-4 w-4 text-white" />
+                      </div>
+                      <div className="rounded-2xl bg-slate-800 px-4 py-3">
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" />
+                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* Suggestions */}
+                {messages.length <= 2 && !chatOpen && (
+                  <div className="border-t border-slate-800 px-4 py-3 bg-slate-900/50">
+                    <p className="text-xs text-slate-500 mb-2">Sugestões:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {(suggestionsMap[activeAgent.id] || []).map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => handleSendMessage(s)}
+                          className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1.5 text-xs text-slate-300 transition-all hover:border-blue-500/50 hover:text-white hover:bg-slate-800"
+                        >
+                          {s}
+                        </button>
+                      ))}
                     </div>
                   </div>
+                )}
+
+                {/* Input */}
+                <div className="border-t border-slate-800 bg-slate-900 p-4">
+                  <form
+                    onSubmit={(e) => { e.preventDefault(); handleSendMessage() }}
+                    className="flex gap-2"
+                  >
+                    <input
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      placeholder="Digite sua mensagem..."
+                      className="flex-1 h-11 rounded-xl border border-slate-700 bg-slate-800 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+                      disabled={isLoading}
+                    />
+                    <button
+                      type="submit"
+                      disabled={isLoading || !input.trim()}
+                      className="h-11 w-11 flex items-center justify-center rounded-xl bg-blue-600 text-white transition-all hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 active:scale-95"
+                    >
+                      <Send className="h-5 w-5" />
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* ─── EMAIL DEMO ─── */}
+          {demoMode === "email" && (
+            <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-orange-500/5">
+              {/* Email Header */}
+              <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500">
+                  <Mail className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">Demo por Email</h3>
+                  <p className="text-xs text-slate-400">Envie um email para a Sofia e veja a resposta do agente real</p>
+                </div>
+              </div>
+
+              {!emailSent ? (
+                /* Email Form */
+                <form onSubmit={handleEmailSubmit} className="p-5 space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs text-slate-400 mb-1.5">Seu nome</label>
+                      <input
+                        type="text"
+                        value={emailForm.name}
+                        onChange={(e) => setEmailForm(prev => ({ ...prev, name: e.target.value }))}
+                        placeholder="Maria Silva"
+                        className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-400 mb-1.5">Seu email <span className="text-orange-400">*</span></label>
+                      <input
+                        type="email"
+                        required
+                        value={emailForm.email}
+                        onChange={(e) => setEmailForm(prev => ({ ...prev, email: e.target.value }))}
+                        placeholder="maria@email.com"
+                        className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1.5">Assunto</label>
+                    <input
+                      type="text"
+                      value={emailForm.subject}
+                      onChange={(e) => setEmailForm(prev => ({ ...prev, subject: e.target.value }))}
+                      placeholder="Agendamento de limpeza de pele"
+                      className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1.5">Mensagem <span className="text-orange-400">*</span></label>
+                    <textarea
+                      required
+                      rows={4}
+                      value={emailForm.body}
+                      onChange={(e) => setEmailForm(prev => ({ ...prev, body: e.target.value }))}
+                      placeholder="Olá, gostaria de saber os horários disponíveis para uma limpeza de pele..."
+                      className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors resize-none"
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1">
+                    <p className="text-xs text-slate-500">
+                      Para: <span className="text-orange-400">sofia@reply.digitai.app</span>
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={emailSending || !emailForm.email || !emailForm.body}
+                      className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-orange-500/25 disabled:opacity-40 active:scale-95"
+                    >
+                      <Send className="h-4 w-4" />
+                      Enviar email
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                /* Email Sent + Response */
+                <div className="p-5 space-y-4">
+                  {/* Sent email preview */}
+                  <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <span className="text-sm font-medium text-green-400">Email enviado</span>
+                    </div>
+                    <div className="text-xs text-slate-400 space-y-1">
+                      <p><span className="text-slate-500">De:</span> {emailForm.name || emailForm.email} &lt;{emailForm.email}&gt;</p>
+                      <p><span className="text-slate-500">Para:</span> sofia@reply.digitai.app</p>
+                      {emailForm.subject && <p><span className="text-slate-500">Assunto:</span> {emailForm.subject}</p>}
+                    </div>
+                    <p className="mt-2 text-sm text-slate-300 whitespace-pre-wrap">{emailForm.body}</p>
+                  </div>
+
+                  {/* Agent response */}
+                  {emailSending ? (
+                    <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-5 text-center">
+                      <Loader2 className="h-6 w-6 text-orange-400 animate-spin mx-auto mb-3" />
+                      <p className="text-sm text-slate-300 font-medium">O agente está processando seu email...</p>
+                      <p className="text-xs text-slate-500 mt-1">Isso usa o pipeline real — pode levar até 60 segundos</p>
+                    </div>
+                  ) : emailResponse && (
+                    <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500">
+                          <Bot className="h-3.5 w-3.5 text-white" />
+                        </div>
+                        <span className="text-sm font-medium text-white">Sofia respondeu</span>
+                      </div>
+                      <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{emailResponse}</p>
+                    </div>
+                  )}
+
+                  {/* Reset button */}
+                  {!emailSending && (
+                    <div className="text-center pt-2">
+                      <button
+                        onClick={resetEmailDemo}
+                        className="text-sm text-slate-400 hover:text-white transition-colors underline underline-offset-4"
+                      >
+                        Enviar outro email
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
-              <div ref={messagesEndRef} />
             </div>
+          )}
 
-            {/* Suggestions */}
-            {messages.length <= 2 && !chatOpen && (
-              <div className="border-t border-slate-800 px-4 py-3 bg-slate-900/50">
-                <p className="text-xs text-slate-500 mb-2">Sugestões:</p>
-                <div className="flex flex-wrap gap-2">
-                  {(suggestionsMap[activeAgent.id] || []).map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => handleSendMessage(s)}
-                      className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1.5 text-xs text-slate-300 transition-all hover:border-blue-500/50 hover:text-white hover:bg-slate-800"
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Input */}
-            <div className="border-t border-slate-800 bg-slate-900 p-4">
-              <form
-                onSubmit={(e) => { e.preventDefault(); handleSendMessage() }}
-                className="flex gap-2"
-              >
-                <input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Digite sua mensagem..."
-                  className="flex-1 h-11 rounded-xl border border-slate-700 bg-slate-800 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
-                  disabled={isLoading}
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !input.trim()}
-                  className="h-11 w-11 flex items-center justify-center rounded-xl bg-blue-600 text-white transition-all hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 active:scale-95"
-                >
-                  <Send className="h-5 w-5" />
-                </button>
-              </form>
-            </div>
-          </div>
-
-          {/* CTA below chat */}
+          {/* CTA below demo */}
           <div className="mt-8 text-center">
             <p className="text-slate-500 text-sm">
-              Estes são agentes de demonstração. Os agentes reais funcionam no WhatsApp, Instagram, webchat e email — com os dados reais do seu negócio.
+              {demoMode === "chat"
+                ? "Estes são agentes de demonstração. Os agentes reais funcionam no WhatsApp, Instagram, webchat e email — com os dados reais do seu negócio."
+                : "Este email é processado pelo pipeline real da Digitai — o mesmo que atende clientes em produção."
+              }
             </p>
           </div>
         </div>
