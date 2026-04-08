@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
 import {
   MessageSquare, Bot, Zap, Brain, BarChart3, Shield,
   Users, Building2, Stethoscope, Wrench, Scale, ShoppingCart,
@@ -55,7 +56,7 @@ interface Message {
 const stats = [
   { value: "6", label: "Funções integradas", suffix: "" },
   { value: "11", label: "Nichos de mercado", suffix: "+" },
-  { value: "90", label: "Tipos de agentes IA", suffix: "+" },
+  { value: "90", label: "Tipos de funcionários IA", suffix: "+" },
   { value: "24", label: "Disponibilidade", suffix: "/7" },
 ]
 
@@ -161,7 +162,7 @@ function AnimatedStat({ value, label, suffix }: { value: string; label: string; 
 // ─── Main Page ───
 export default function ShowcasePage() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Olá! Sou a Sofia, assistente de demonstração da Digitai. Posso te mostrar tudo que um agente IA faz — atendimento, orçamentos, coleta de dados, documentos e muito mais. O que você quer ver? 😊" }
+    { role: "assistant", content: "Olá! Eu sou a Sofia, funcionária de IA de demonstração da Digitai. 👋\n\nPosso atender clientes, agendar horários, coletar dados, gerar documentos e fazer orçamentos — tudo automaticamente, pelo WhatsApp.\n\nO que você gostaria de ver?" }
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -209,7 +210,7 @@ export default function ShowcasePage() {
     <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
 
       {/* ════════ HERO ════════ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] animate-pulse" />
@@ -220,6 +221,15 @@ export default function ShowcasePage() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
         <div className="relative z-10 container mx-auto px-4 text-center">
+          <Image
+            src="/logo-dark-accent.svg"
+            alt="Digitai"
+            width={180}
+            height={48}
+            className="mx-auto mb-8"
+            priority
+          />
+
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 mb-8">
             <Sparkles className="h-4 w-4 text-blue-400" />
             <span className="text-sm text-blue-300">Plataforma de Agentes IA Multifunção</span>
@@ -227,7 +237,7 @@ export default function ShowcasePage() {
 
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-6">
             <span className="bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
-              Sua equipe de IA
+              Seus funcionários de IA
             </span>
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-400 bg-clip-text text-transparent">
@@ -259,7 +269,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ STATS ════════ */}
-      <section className="py-20 sm:py-28 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-slate-800/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {stats.map((stat) => (
@@ -270,7 +280,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ CAPABILITIES ════════ */}
-      <section className="py-20 sm:py-28 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent" />
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-16">
@@ -303,7 +313,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ HOW IT WORKS ════════ */}
-      <section className="py-20 sm:py-28 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-slate-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -338,7 +348,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ NICHES ════════ */}
-      <section className="py-20 sm:py-28 relative">
+      <section className="py-12 sm:py-16 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent" />
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-16">
@@ -370,7 +380,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ DIFFERENTIALS ════════ */}
-      <section className="py-20 sm:py-28 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-slate-800/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -386,9 +396,9 @@ export default function ShowcasePage() {
               {[
                 { icon: Brain, title: "IA de verdade", desc: "Não é fluxograma. O agente entende contexto, interpreta áudios, imagens e PDFs, e responde de forma natural." },
                 { icon: Shield, title: "WhatsApp Oficial", desc: "API oficial da Meta (WABA). Sem risco de banimento, com selo verde e criptografia end-to-end." },
-                { icon: Zap, title: "Multifunção", desc: "Um agente que faz o trabalho de vários: atende, agenda, orça, coleta dados, gera documentos e processa pedidos." },
+                { icon: Zap, title: "Multifunção", desc: "Cada funcionário faz o trabalho de vários: atende, agenda, orça, coleta dados, gera documentos e processa pedidos." },
                 { icon: BarChart3, title: "Controle total", desc: "Painel admin com analytics, CRM integrado, métricas de satisfação, custos por conversa e histórico completo." },
-                { icon: Users, title: "Multi-agente", desc: "Configure agentes diferentes para funções diferentes. Cada um com sua personalidade, regras e ferramentas." },
+                { icon: Users, title: "Equipe completa", desc: "Tenha funcionários diferentes para cada setor do seu negócio. RH, jurídico, atendimento, comercial — cada um com suas regras e personalidade." },
                 { icon: Building2, title: "Escalável", desc: "De 1 a 100 agentes. Infra preparada para crescer junto com o seu negócio." },
               ].map((diff) => (
                 <div key={diff.title} className="flex gap-4 p-4 rounded-xl hover:bg-slate-900/50 transition-colors">
@@ -405,7 +415,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ LIVE CHAT DEMO ════════ */}
-      <section ref={chatSectionRef} className="py-20 sm:py-28 relative">
+      <section ref={chatSectionRef} className="py-12 sm:py-16 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-transparent" />
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
