@@ -7,44 +7,77 @@ import {
   Users, Building2, Stethoscope, Wrench, Scale, ShoppingCart,
   GraduationCap, Utensils, Home, Send, User, Loader2,
   ClipboardList, FileText, Calculator, Headphones, Package,
-  Calendar, ChevronDown, Sparkles, ArrowRight, CheckCircle2
+  Calendar, ChevronDown, Sparkles, ArrowRight, CheckCircle2,
+  Briefcase, Truck, HardHat, Heart, DollarSign, ChevronUp
 } from "lucide-react"
 
-// ─── Showcase System Prompt (multi-function demo) ───
-const SHOWCASE_PROMPT = `Você é a assistente virtual de demonstração da plataforma Digitai.
+// ─── Agent Prompts ───
+const TAMI_PROMPT = `Você é a Tami, funcionária de IA da clínica Bella Estética.
 
 ## Sua Identidade
-- Nome: Sofia (assistente de demonstração)
-- Você está demonstrando as capacidades da plataforma Digitai para um potencial cliente
-- Seja impressionante, profissional e mostre o poder da plataforma
+- Nome: Tami
+- Cargo: Recepcionista e assistente virtual da Bella Estética
+- Você cuida de todo o atendimento da clínica: agendamentos, anamnese, orçamentos e fichas de pacientes
+- Tom: acolhedor, profissional e empático. Trate cada pessoa como paciente, não como "usuário"
 
-## O que você pode demonstrar
-Você é capaz de simular TODAS as funções que um agente Digitai oferece:
-
-1. **Atendimento Inteligente** — Responder dúvidas sobre qualquer tipo de negócio
-2. **Coleta de Dados (Intake)** — Coletar informações estruturadas do cliente (anamnese, briefing, diagnóstico)
-3. **Geração de Documentos** — Gerar fichas, relatórios, orçamentos formatados
-4. **Orçamentos Automáticos** — Calcular e apresentar propostas de preço
-5. **Suporte ao Cliente** — Abrir e acompanhar tickets de suporte
-6. **Gestão de Pedidos** — Receber e processar pedidos
+## O que você faz
+1. **Agendamento** — Verifica disponibilidade, sugere horários e marca procedimentos (limpeza de pele, botox, preenchimento, peeling, drenagem, massagem)
+2. **Anamnese** — Coleta dados de saúde do paciente antes do procedimento (alergias, medicações, histórico, gestação)
+3. **Orçamento** — Monta orçamento personalizado com os procedimentos que a paciente precisa
+4. **Ficha do paciente** — Gera ficha completa com dados pessoais + anamnese + procedimentos anteriores
+5. **Suporte** — Tira dúvidas sobre pós-procedimento, cuidados, contraindicações
 
 ## Como se comportar
-- Se alguém perguntar "o que você faz", mostre a amplitude de funções
-- Se alguém simular ser um cliente de clínica, oficina, escritório, etc — entre no papel e demonstre como o agente atuaria
-- Use exemplos concretos e realistas
-- Seja concisa mas impressionante (máx 3-4 parágrafos)
-- Use emojis com moderação
+- Sempre cumprimente com o nome da clínica
+- Use termos da estética (procedimento, sessão, protocolo, área tratada)
+- Pergunte sobre alergias/contraindicações antes de sugerir procedimento
+- Sugira combinações de tratamento quando fizer sentido
+- Seja concisa (máx 3-4 parágrafos)
+- Use emojis com moderação (✨💆‍♀️📋)
 - Em português brasileiro
-- NUNCA diga que é apenas uma simulação. Aja como um agente real demonstrando capacidades reais.
+- NUNCA diga que é simulação. Aja como recepcionista real
 
-## Exemplos de interação
-- "Como funciona?" → Explique as 6 funções com exemplos
-- "Finge que é uma oficina" → Simule atendimento de oficina (orçamento de reparo, coleta de dados do veículo, agendamento de visita)
-- "E pra um escritório?" → Simule atendimento corporativo (intake de solicitação, geração de relatório, suporte)
-- "Quanto custa um orçamento?" → Simule geração de orçamento detalhado
+## Profissionais da clínica
+- Dra. Marina — Dermatologista (botox, preenchimento, peeling)
+- Camila — Esteticista (limpeza de pele, drenagem, massagem)
+- Paula — Nutricionista (protocolo detox, emagrecimento)
 
-## Objetivo
-Deixar a pessoa impressionada com o que a IA pode fazer. Mostrar que NÃO é só chatbot de FAQ — é uma funcionária virtual completa.`
+## Horários
+Segunda a sexta: 8h às 19h | Sábado: 8h às 13h`
+
+const SOFIA_JURIDICO_PROMPT = `Você é a Sofia, funcionária de IA do escritório Castro & Associados Advocacia.
+
+## Sua Identidade
+- Nome: Sofia
+- Cargo: Assistente jurídica virtual do escritório Castro & Associados
+- Você faz o primeiro atendimento, coleta dados do caso, agenda consultas e gera documentos
+- Tom: profissional, objetivo e confiável. Use linguagem acessível, sem juridiquês desnecessário
+
+## O que você faz
+1. **Intake do caso** — Coleta dados estruturados: tipo de demanda, partes envolvidas, documentos disponíveis, prazos, urgência
+2. **Geração de documentos** — Gera petições iniciais, contratos, notificações extrajudiciais, pareceres e procurações a partir dos dados coletados
+3. **Agendamento** — Marca consultas presenciais ou por videoconferência com os advogados
+4. **Orçamento de honorários** — Calcula e apresenta proposta de honorários com base no tipo de causa e complexidade
+5. **Suporte** — Acompanhamento de processos, prazos e andamentos
+
+## Como se comportar
+- Sempre pergunte o tipo de demanda antes de qualquer coisa (trabalhista, cível, contratual, família, empresarial)
+- Colete os fatos relevantes de forma organizada
+- Se for urgente (liminar, prazo), sinalize e priorize
+- Explique os próximos passos de forma clara
+- Seja concisa (máx 3-4 parágrafos)
+- Use emojis com moderação (⚖️📋📄)
+- Em português brasileiro
+- NUNCA diga que é simulação. Aja como assistente jurídica real
+
+## Áreas de atuação
+- Dra. Ana Castro — Direito Trabalhista e Previdenciário
+- Dr. Ricardo Mendes — Direito Civil e Contratos
+- Dra. Juliana Reis — Direito de Família e Sucessões
+- Dr. Pedro Almeida — Direito Empresarial
+
+## Horários
+Segunda a sexta: 9h às 18h | Sábados mediante agendamento prévio`
 
 // ─── Types ───
 interface Message {
@@ -56,7 +89,7 @@ interface Message {
 const stats = [
   { value: "6", label: "Funções integradas", suffix: "" },
   { value: "11", label: "Nichos de mercado", suffix: "+" },
-  { value: "90", label: "Tipos de funcionários IA", suffix: "+" },
+  { value: "64", label: "Tipos de funcionários IA", suffix: "+" },
   { value: "24", label: "Disponibilidade", suffix: "/7" },
 ]
 
@@ -100,25 +133,176 @@ const capabilities = [
   },
 ]
 
-// ─── Niches Data ───
-const niches = [
-  { icon: Stethoscope, name: "Saúde", example: "Clínicas, consultórios, laboratórios" },
-  { icon: Scale, name: "Jurídico", example: "Escritórios de advocacia" },
-  { icon: Building2, name: "Corporativo", example: "RH, operações, administrativo" },
-  { icon: Wrench, name: "Serviços", example: "Oficinas, assistências, manutenção" },
-  { icon: ShoppingCart, name: "Varejo", example: "Lojas, e-commerce, atacado" },
-  { icon: Utensils, name: "Food Service", example: "Restaurantes, delivery, buffets" },
-  { icon: Home, name: "Imobiliário", example: "Imobiliárias, construtoras" },
-  { icon: GraduationCap, name: "Educação", example: "Escolas, cursos, treinamentos" },
+// ─── Agent Definitions ───
+interface AgentDef {
+  id: string
+  name: string
+  niche: string
+  color: string
+  prompt: string
+  welcomeMessage: string
+}
+
+const agents: AgentDef[] = [
+  {
+    id: "tami",
+    name: "Tami",
+    niche: "Estética",
+    color: "from-pink-500 to-rose-500",
+    prompt: TAMI_PROMPT,
+    welcomeMessage: "Olá! Eu sou a Tami, da Bella Estética. ✨\n\nCuido de todo o atendimento da clínica: agendo procedimentos, faço anamnese, monto orçamentos e gero fichas de pacientes — tudo aqui na conversa.\n\nComo posso te ajudar hoje?"
+  },
+  {
+    id: "sofia",
+    name: "Sofia",
+    niche: "Jurídico",
+    color: "from-blue-500 to-indigo-500",
+    prompt: SOFIA_JURIDICO_PROMPT,
+    welcomeMessage: "Olá! Eu sou a Sofia, do escritório Castro & Associados. ⚖️\n\nFaço o primeiro atendimento jurídico: coleto os dados do seu caso, agendo consultas com nossos advogados, gero documentos e monto propostas de honorários.\n\nQual a sua demanda?"
+  }
 ]
 
-// ─── Chat Suggestions ───
-const suggestions = [
-  "O que você consegue fazer?",
-  "Simula um atendimento de oficina",
-  "Como funciona o orçamento automático?",
-  "Mostra a coleta de dados",
+// ─── Niches Data with Employees ───
+interface NicheEmployee {
+  name: string
+  desc: string
+}
+
+interface NicheData {
+  icon: typeof Stethoscope
+  name: string
+  example: string
+  employees: NicheEmployee[]
+}
+
+const niches: NicheData[] = [
+  {
+    icon: Stethoscope, name: "Saúde & Estética", example: "Clínicas, consultórios, salões, academias",
+    employees: [
+      { name: "Esteticista", desc: "Anamnese, ficha, agendamento e orçamento de tratamentos" },
+      { name: "Dermatologista", desc: "Consulta, anamnese, receita gerada e retorno agendado" },
+      { name: "Dentista", desc: "Triagem, orçamento de procedimento e agendamento" },
+      { name: "Médico Geral", desc: "Pré-consulta, anamnese e encaminhamento" },
+      { name: "Fisioterapeuta", desc: "Avaliação, plano de sessões e relatório de evolução" },
+      { name: "Psicólogo", desc: "Triagem, agendamento e ficha de acompanhamento" },
+      { name: "Nutricionista", desc: "Anamnese alimentar, plano e relatório de progresso" },
+      { name: "Personal Trainer", desc: "Avaliação física, treino e acompanhamento" },
+      { name: "Veterinário", desc: "Ficha do pet, vacinação e agendamento" },
+      { name: "Cabeleireiro", desc: "Agendamento e orçamento de serviços" },
+    ]
+  },
+  {
+    icon: Scale, name: "Jurídico", example: "Escritórios de advocacia, cartórios, compliance",
+    employees: [
+      { name: "Advogado Contratualista", desc: "Dados do caso, contrato gerado e honorários" },
+      { name: "Advogado Trabalhista", desc: "Coleta de dados, petição e notificação" },
+      { name: "Tabelião", desc: "Agendamento, coleta e documentação cartorial" },
+      { name: "Analista de Compliance", desc: "Coleta, relatório e suporte regulatório" },
+      { name: "DPO / LGPD", desc: "Coleta de incidentes, relatório e suporte" },
+      { name: "Analista de Contratos", desc: "Revisão, geração e relatório de contratos" },
+    ]
+  },
+  {
+    icon: DollarSign, name: "Contabilidade", example: "Escritórios contábeis, consultorias financeiras",
+    employees: [
+      { name: "Contador", desc: "Dados fiscais, declarações e relatório mensal" },
+      { name: "Despachante", desc: "Dados do veículo, documentação e orçamento" },
+      { name: "Analista Financeiro", desc: "Coleta de dados e relatório financeiro" },
+      { name: "Consultor Financeiro", desc: "Diagnóstico, plano financeiro e acompanhamento" },
+      { name: "Analista Fiscal", desc: "Coleta tributária, documentos e relatório" },
+    ]
+  },
+  {
+    icon: Utensils, name: "Food Service", example: "Restaurantes, pizzarias, confeitarias, delivery",
+    employees: [
+      { name: "Chef / Cozinheiro", desc: "Pedidos pelo WhatsApp e relatório de vendas" },
+      { name: "Pizzaiolo", desc: "Cardápio interativo, pedido e suporte entrega" },
+      { name: "Confeiteiro", desc: "Encomenda personalizada, ficha e orçamento" },
+      { name: "Farmacêutico", desc: "Receita, manipulação e orçamento" },
+    ]
+  },
+  {
+    icon: ShoppingCart, name: "Varejo", example: "Lojas, e-commerce, marketplaces",
+    employees: [
+      { name: "Vendedor", desc: "Qualificação, orçamento personalizado e pedido" },
+      { name: "SAC / Ouvidoria", desc: "Reclamação, ticket e relatório de tendências" },
+      { name: "Customer Success", desc: "Acompanhamento, ficha e relatório de saúde" },
+      { name: "Pós-venda", desc: "Follow-up, pesquisa de satisfação e relatório" },
+    ]
+  },
+  {
+    icon: HardHat, name: "Construção & Serviços", example: "Arquitetos, engenheiros, mecânicos, técnicos",
+    employees: [
+      { name: "Arquiteto", desc: "Briefing, memorial descritivo e orçamento de projeto" },
+      { name: "Engenheiro Civil", desc: "Visita técnica, laudo/ART e orçamento" },
+      { name: "Mecânico", desc: "Diagnóstico do veículo, orçamento e agendamento" },
+      { name: "Eletricista", desc: "Chamado, orçamento e agendamento de visita" },
+      { name: "Técnico TI", desc: "Abertura de chamado, diagnóstico e orçamento" },
+    ]
+  },
+  {
+    icon: Home, name: "Imobiliário", example: "Imobiliárias, corretoras de seguros",
+    employees: [
+      { name: "Corretor de Imóveis", desc: "Qualifica lead, agenda visita e proposta" },
+      { name: "Corretor de Seguros", desc: "Perfil do segurado, apólice e cotação" },
+      { name: "Corretor Plano de Saúde", desc: "Perfil, cotação e documentação" },
+      { name: "Consultor de Imigração", desc: "Intake, documentação e agendamento" },
+    ]
+  },
+  {
+    icon: GraduationCap, name: "Educação", example: "Professores, coaches, consultores, agências",
+    employees: [
+      { name: "Professor / Tutor", desc: "Avaliação, material gerado e relatório de progresso" },
+      { name: "Coach / Mentor", desc: "Intake, plano de ação e acompanhamento" },
+      { name: "Consultor de Negócios", desc: "Diagnóstico, proposta e relatório" },
+      { name: "Agência de Marketing", desc: "Briefing, proposta e relatório de campanha" },
+    ]
+  },
+  {
+    icon: Briefcase, name: "Comercial", example: "SDRs, key accounts, analistas, licitações",
+    employees: [
+      { name: "SDR / Pré-vendas", desc: "Qualificação do lead e agendamento com closer" },
+      { name: "Key Account Manager", desc: "Health check, plano de ação e renovação" },
+      { name: "Analista Comercial", desc: "Coleta, proposta comercial e relatório" },
+      { name: "Analista de Licitações", desc: "Documentação, proposta e relatório" },
+    ]
+  },
+  {
+    icon: Users, name: "RH & Pessoas", example: "Recrutamento, DP, treinamento",
+    employees: [
+      { name: "Recrutador", desc: "Triagem CV, agendamento de entrevista e funil" },
+      { name: "Analista de DP", desc: "Solicitação, holerite/férias e relatório de folha" },
+      { name: "Analista de Treinamento", desc: "Inscrição, material e relatório de presença" },
+      { name: "BP de RH", desc: "Atendimento, coleta e relatório gerencial" },
+    ]
+  },
+  {
+    icon: Truck, name: "Operações", example: "Compras, estoque, facilities, TI, projetos",
+    employees: [
+      { name: "Comprador", desc: "Requisição, cotação de fornecedor e pedido" },
+      { name: "Facilities", desc: "Chamado, orçamento e agendamento de manutenção" },
+      { name: "Secretária Executiva", desc: "Agenda, documentos e relatórios" },
+      { name: "Helpdesk N1", desc: "Abertura de ticket, diagnóstico e encaminhamento" },
+      { name: "Gerente de Projetos", desc: "Status, coleta de dados e relatório de progresso" },
+    ]
+  },
 ]
+
+// ─── Chat Suggestions per Agent ───
+const suggestionsMap: Record<string, string[]> = {
+  tami: [
+    "Quero agendar uma limpeza de pele",
+    "Quanto custa botox?",
+    "Preciso fazer uma anamnese",
+    "Quais procedimentos vocês fazem?",
+  ],
+  sofia: [
+    "Preciso de um contrato de prestação de serviços",
+    "Quero agendar uma consulta trabalhista",
+    "Quanto custa uma ação de divórcio?",
+    "Recebi uma notificação, o que faço?",
+  ],
+}
 
 // ─── Animated Counter Component ───
 function AnimatedStat({ value, label, suffix }: { value: string; label: string; suffix: string }) {
@@ -161,14 +345,24 @@ function AnimatedStat({ value, label, suffix }: { value: string; label: string; 
 
 // ─── Main Page ───
 export default function ShowcasePage() {
+  const [activeAgent, setActiveAgent] = useState<AgentDef>(agents[0])
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Olá! Eu sou a Sofia, funcionária de IA de demonstração da Digitai. 👋\n\nPosso atender clientes, agendar horários, coletar dados, gerar documentos e fazer orçamentos — tudo automaticamente, pelo WhatsApp.\n\nO que você gostaria de ver?" }
+    { role: "assistant", content: agents[0].welcomeMessage }
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
+  const [expandedNiche, setExpandedNiche] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const chatSectionRef = useRef<HTMLDivElement>(null)
+
+  const switchAgent = (agent: AgentDef) => {
+    if (agent.id === activeAgent.id) return
+    setActiveAgent(agent)
+    setMessages([{ role: "assistant", content: agent.welcomeMessage }])
+    setChatOpen(false)
+    setInput("")
+  }
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -189,7 +383,7 @@ export default function ShowcasePage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: allMessages,
-          systemPrompt: SHOWCASE_PROMPT,
+          systemPrompt: activeAgent.prompt,
         }),
       })
       if (!response.ok) throw new Error("Erro")
@@ -347,7 +541,7 @@ export default function ShowcasePage() {
         </div>
       </section>
 
-      {/* ════════ NICHES ════════ */}
+      {/* ════════ NICHES (Accordion) ════════ */}
       <section className="py-12 sm:py-16 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/10 to-transparent" />
         <div className="relative z-10 container mx-auto px-4">
@@ -359,22 +553,53 @@ export default function ShowcasePage() {
               </span>
             </h2>
             <p className="mx-auto max-w-2xl text-slate-400 text-lg">
-              A plataforma se adapta ao seu segmento. O agente entende o vocabulário,
-              os processos e as regras do seu mercado.
+              A plataforma se adapta ao seu segmento. Toque num nicho e veja
+              os funcionários de IA disponíveis.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {niches.map((niche) => (
-              <div
-                key={niche.name}
-                className="group rounded-xl border border-slate-800 bg-slate-900/30 p-4 sm:p-5 text-center transition-all hover:border-slate-700 hover:bg-slate-900/60"
-              >
-                <niche.icon className="h-8 w-8 mx-auto mb-3 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                <h3 className="font-semibold mb-1">{niche.name}</h3>
-                <p className="text-xs text-slate-500">{niche.example}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {niches.map((niche) => {
+              const isOpen = expandedNiche === niche.name
+              return (
+                <div key={niche.name} className={`${isOpen ? "col-span-2 sm:col-span-3 lg:col-span-4" : ""}`}>
+                  <button
+                    onClick={() => setExpandedNiche(isOpen ? null : niche.name)}
+                    className={`w-full rounded-xl border p-4 sm:p-5 text-center transition-all ${
+                      isOpen
+                        ? "border-blue-500/50 bg-slate-900/80"
+                        : "border-slate-800 bg-slate-900/30 hover:border-slate-700 hover:bg-slate-900/60"
+                    }`}
+                  >
+                    <niche.icon className={`h-8 w-8 mx-auto mb-3 transition-colors ${isOpen ? "text-blue-400" : "text-slate-400"}`} />
+                    <h3 className="font-semibold mb-1">{niche.name}</h3>
+                    <p className="text-xs text-slate-500">{niche.example}</p>
+                    {isOpen ? (
+                      <ChevronUp className="h-4 w-4 mx-auto mt-2 text-blue-400" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 mx-auto mt-2 text-slate-600" />
+                    )}
+                  </button>
+
+                  {isOpen && (
+                    <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 animate-in fade-in duration-200">
+                      {niche.employees.map((emp) => (
+                        <div
+                          key={emp.name}
+                          className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3"
+                        >
+                          <Bot className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="font-medium text-sm text-white">{emp.name}</p>
+                            <p className="text-xs text-slate-400 leading-relaxed">{emp.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -426,18 +651,36 @@ export default function ShowcasePage() {
               </span>
             </h2>
             <p className="mx-auto max-w-xl text-slate-400 text-lg">
-              Converse com um agente Digitai e veja o que ele é capaz de fazer.
+              Dois nichos diferentes, mesma plataforma. Escolha um agente e converse.
             </p>
+          </div>
+
+          {/* Agent Toggle */}
+          <div className="flex justify-center gap-3 mb-6">
+            {agents.map((agent) => (
+              <button
+                key={agent.id}
+                onClick={() => switchAgent(agent)}
+                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                  activeAgent.id === agent.id
+                    ? `bg-gradient-to-r ${agent.color} text-white shadow-lg`
+                    : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+                }`}
+              >
+                <Bot className="h-4 w-4" />
+                {agent.name} — {agent.niche}
+              </button>
+            ))}
           </div>
 
           <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
             {/* Chat Header */}
             <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
+              <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
                 <Bot className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">Sofia — Agente Digitai</h3>
+                <h3 className="font-semibold text-white">{activeAgent.name} — {activeAgent.niche}</h3>
                 <div className="flex items-center gap-1.5">
                   <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-xs text-slate-400">Online agora</span>
@@ -450,7 +693,7 @@ export default function ShowcasePage() {
               {messages.map((msg, i) => (
                 <div key={i} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
+                    <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
                       <Bot className="h-4 w-4 text-white" />
                     </div>
                   )}
@@ -490,7 +733,7 @@ export default function ShowcasePage() {
               <div className="border-t border-slate-800 px-4 py-3 bg-slate-900/50">
                 <p className="text-xs text-slate-500 mb-2">Sugestões:</p>
                 <div className="flex flex-wrap gap-2">
-                  {suggestions.map((s) => (
+                  {(suggestionsMap[activeAgent.id] || []).map((s) => (
                     <button
                       key={s}
                       onClick={() => handleSendMessage(s)}
@@ -530,7 +773,7 @@ export default function ShowcasePage() {
           {/* CTA below chat */}
           <div className="mt-8 text-center">
             <p className="text-slate-500 text-sm">
-              Isso é uma demonstração. O agente real funciona no WhatsApp, Instagram, webchat e email.
+              Estes são agentes de demonstração. Os agentes reais funcionam no WhatsApp, Instagram, webchat e email — com os dados reais do seu negócio.
             </p>
           </div>
         </div>
