@@ -9,7 +9,7 @@ import {
   ClipboardList, FileText, Calculator, Headphones, Package,
   Calendar, ChevronDown, Sparkles, ArrowRight, CheckCircle2,
   Briefcase, Truck, HardHat, Heart, DollarSign, ChevronUp,
-  Mail, Phone, Globe, Instagram, Paperclip, X
+  Mail, Phone, Globe, Instagram, Paperclip, X, ExternalLink
 } from "lucide-react"
 
 // ─── Agent Prompts ───
@@ -143,6 +143,7 @@ interface AgentDef {
   prompt: string
   welcomeMessage: string
   emailAddress: string
+  waNumber: string
   emailPlaceholders: {
     name: string
     email: string
@@ -160,6 +161,7 @@ const agents: AgentDef[] = [
     prompt: TAMI_PROMPT,
     welcomeMessage: "Olá! Eu sou a Tami, da Bella Estética. ✨\n\nCuido de todo o atendimento da clínica: agendo procedimentos, faço anamnese, monto orçamentos e gero fichas de pacientes — tudo aqui na conversa.\n\nComo posso te ajudar hoje?",
     emailAddress: "tami@reply.digitai.app",
+    waNumber: "5521971527140",
     emailPlaceholders: {
       name: "Maria Silva",
       email: "maria@email.com",
@@ -175,6 +177,7 @@ const agents: AgentDef[] = [
     prompt: SOFIA_JURIDICO_PROMPT,
     welcomeMessage: "Olá! Eu sou a Sofia, do escritório Castro & Associados. ⚖️\n\nFaço o primeiro atendimento jurídico: coleto os dados do seu caso, agendo consultas com nossos advogados, gero documentos e monto propostas de honorários.\n\nQual a sua demanda?",
     emailAddress: "sofia@reply.digitai.app",
+    waNumber: "15558354441",
     emailPlaceholders: {
       name: "Carlos Oliveira",
       email: "carlos@email.com",
@@ -588,20 +591,22 @@ export default function ShowcasePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Como funciona
+              Simples de{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                começar.
+              </span>
             </h2>
             <p className="mx-auto max-w-2xl text-slate-400 text-lg">
-              Do zero ao agente funcionando em minutos, sem código.
+              Você cuida do seu negócio. A gente cuida da tecnologia.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="grid gap-8 sm:gap-12">
               {[
-                { step: "01", title: "Configure seu negócio", desc: "Informe seus serviços, horários, equipe e regras de atendimento. O sistema cria o agente sob medida." },
-                { step: "02", title: "Conecte seus canais", desc: "WhatsApp (API oficial), webchat, Instagram, email — o agente responde em todos, com o mesmo contexto." },
-                { step: "03", title: "Ative as funções", desc: "Agendamento, orçamento, coleta de dados, documentos, suporte, pedidos — ligue o que precisar." },
-                { step: "04", title: "Acompanhe tudo", desc: "Painel completo com analytics, CRM, histórico de conversas, métricas de satisfação e custos." },
+                { step: "01", title: "Conte sobre o seu negócio", desc: "Em uma conversa rápida, entendemos seus serviços, equipe, horários e regras. Nenhum conhecimento técnico necessário." },
+                { step: "02", title: "Nós montamos tudo", desc: "Criamos seu agente personalizado, conectamos ao WhatsApp oficial (com selo verde), configuramos as funções e integrações que você precisa." },
+                { step: "03", title: "Seu funcionário de IA começa a trabalhar", desc: "O agente passa a atender seus clientes 24/7 — agende, orce, colete dados e gere documentos. Você acompanha tudo pelo painel." },
               ].map((item) => (
                 <div key={item.step} className="flex gap-6 items-start">
                   <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center text-lg font-bold">
@@ -832,10 +837,24 @@ export default function ShowcasePage() {
               </div>
 
               {/* Fictional companies disclaimer */}
-              <p className="text-center text-xs text-slate-500 mb-6 max-w-lg mx-auto">
+              <p className="text-center text-xs text-slate-500 mb-4 max-w-lg mx-auto">
                 Bella Estética e Castro & Associados são empresas fictícias criadas para demonstração.
                 A IA que responde é a mesma tecnologia usada em produção.
               </p>
+
+              {/* WhatsApp button */}
+              <div className="flex justify-center mb-6">
+                <a
+                  href={`https://wa.me/${activeAgent.waNumber}?text=${encodeURIComponent(`Olá ${activeAgent.name}, quero testar o atendimento!`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-green-600 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-green-500 hover:shadow-lg hover:shadow-green-500/25 active:scale-95"
+                >
+                  <Phone className="h-4 w-4" />
+                  Testar {activeAgent.name} no WhatsApp
+                  <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+                </a>
+              </div>
 
               <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
                 {/* Chat Header */}
@@ -1118,6 +1137,81 @@ export default function ShowcasePage() {
               }
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* ════════ INTEREST FORM / LEAD CAPTURE ════════ */}
+      <section className="py-16 sm:py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/30 to-transparent" />
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-xl mx-auto text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+              Quer um{" "}
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                funcionário de IA
+              </span>
+              {" "}para o seu negócio?
+            </h2>
+            <p className="text-slate-400 text-lg">
+              Preencha seus dados e fale direto com a gente pelo WhatsApp.
+            </p>
+          </div>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              const form = e.target as HTMLFormElement
+              const nome = (form.elements.namedItem("lead_nome") as HTMLInputElement).value
+              const empresa = (form.elements.namedItem("lead_empresa") as HTMLInputElement).value
+              const nicho = (form.elements.namedItem("lead_nicho") as HTMLSelectElement).value
+              const msg = `Olá! Vim pela Showcase da Digitai.\n\nNome: ${nome}\nEmpresa: ${empresa}\nSegmento: ${nicho}\n\nGostaria de saber mais sobre os agentes de IA.`
+              window.open(`https://wa.me/5521999501444?text=${encodeURIComponent(msg)}`, "_blank")
+            }}
+            className="max-w-md mx-auto space-y-4"
+          >
+            <div>
+              <input
+                name="lead_nome"
+                type="text"
+                required
+                placeholder="Seu nome"
+                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+              />
+            </div>
+            <div>
+              <input
+                name="lead_empresa"
+                type="text"
+                required
+                placeholder="Nome da empresa"
+                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+              />
+            </div>
+            <div>
+              <select
+                name="lead_nicho"
+                required
+                defaultValue=""
+                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white outline-none focus:border-blue-500 transition-colors appearance-none"
+              >
+                <option value="" disabled className="text-slate-500">Segmento do negócio</option>
+                {niches.map((n) => (
+                  <option key={n.name} value={n.name} className="bg-slate-900">{n.name}</option>
+                ))}
+              </select>
+            </div>
+            <button
+              type="submit"
+              className="w-full h-12 rounded-xl bg-green-600 text-white font-semibold text-sm transition-all hover:bg-green-500 hover:shadow-lg hover:shadow-green-500/25 active:scale-[0.98] flex items-center justify-center gap-2"
+            >
+              <Phone className="h-4 w-4" />
+              Falar pelo WhatsApp
+              <ExternalLink className="h-3.5 w-3.5 opacity-60" />
+            </button>
+            <p className="text-center text-xs text-slate-600">
+              Sem compromisso. Respondemos em até 24h.
+            </p>
+          </form>
         </div>
       </section>
 
