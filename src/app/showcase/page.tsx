@@ -799,6 +799,12 @@ export default function ShowcasePage() {
                 ))}
               </div>
 
+              {/* Fictional companies disclaimer */}
+              <p className="text-center text-xs text-slate-500 mb-6 max-w-lg mx-auto">
+                Bella Estética e Castro & Associados são empresas fictícias criadas para demonstração.
+                A IA que responde é a mesma tecnologia usada em produção.
+              </p>
+
               <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
                 {/* Chat Header */}
                 <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
