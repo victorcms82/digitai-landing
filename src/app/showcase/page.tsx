@@ -9,7 +9,7 @@ import {
   ClipboardList, FileText, Calculator, Headphones, Package,
   Calendar, ChevronDown, Sparkles, ArrowRight, CheckCircle2,
   Briefcase, Truck, HardHat, Heart, DollarSign, ChevronUp,
-  Mail, Phone, Globe, Instagram
+  Mail, Phone, Globe, Instagram, Paperclip, X
 } from "lucide-react"
 
 // ─── Agent Prompts ───
@@ -142,6 +142,13 @@ interface AgentDef {
   color: string
   prompt: string
   welcomeMessage: string
+  emailAddress: string
+  emailPlaceholders: {
+    name: string
+    email: string
+    subject: string
+    body: string
+  }
 }
 
 const agents: AgentDef[] = [
@@ -151,7 +158,14 @@ const agents: AgentDef[] = [
     niche: "Estética",
     color: "from-pink-500 to-rose-500",
     prompt: TAMI_PROMPT,
-    welcomeMessage: "Olá! Eu sou a Tami, da Bella Estética. ✨\n\nCuido de todo o atendimento da clínica: agendo procedimentos, faço anamnese, monto orçamentos e gero fichas de pacientes — tudo aqui na conversa.\n\nComo posso te ajudar hoje?"
+    welcomeMessage: "Olá! Eu sou a Tami, da Bella Estética. ✨\n\nCuido de todo o atendimento da clínica: agendo procedimentos, faço anamnese, monto orçamentos e gero fichas de pacientes — tudo aqui na conversa.\n\nComo posso te ajudar hoje?",
+    emailAddress: "tami@reply.digitai.app",
+    emailPlaceholders: {
+      name: "Maria Silva",
+      email: "maria@email.com",
+      subject: "Agendamento de limpeza de pele",
+      body: "Olá, gostaria de saber os horários disponíveis para uma limpeza de pele...",
+    },
   },
   {
     id: "sofia",
@@ -159,7 +173,14 @@ const agents: AgentDef[] = [
     niche: "Jurídico",
     color: "from-blue-500 to-indigo-500",
     prompt: SOFIA_JURIDICO_PROMPT,
-    welcomeMessage: "Olá! Eu sou a Sofia, do escritório Castro & Associados. ⚖️\n\nFaço o primeiro atendimento jurídico: coleto os dados do seu caso, agendo consultas com nossos advogados, gero documentos e monto propostas de honorários.\n\nQual a sua demanda?"
+    welcomeMessage: "Olá! Eu sou a Sofia, do escritório Castro & Associados. ⚖️\n\nFaço o primeiro atendimento jurídico: coleto os dados do seu caso, agendo consultas com nossos advogados, gero documentos e monto propostas de honorários.\n\nQual a sua demanda?",
+    emailAddress: "sofia@reply.digitai.app",
+    emailPlaceholders: {
+      name: "Carlos Oliveira",
+      email: "carlos@email.com",
+      subject: "Consulta trabalhista",
+      body: "Olá, preciso de orientação sobre uma rescisão contratual. Podem me ajudar?",
+    },
   }
 ]
 
@@ -360,9 +381,11 @@ export default function ShowcasePage() {
   // Email demo state
   const [demoMode, setDemoMode] = useState<"chat" | "email">("chat")
   const [emailForm, setEmailForm] = useState({ name: "", email: "", subject: "", body: "" })
+  const [emailAttachment, setEmailAttachment] = useState<File | null>(null)
   const [emailSending, setEmailSending] = useState(false)
   const [emailResponse, setEmailResponse] = useState<string | null>(null)
   const [emailSent, setEmailSent] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -380,6 +403,11 @@ export default function ShowcasePage() {
           senderName: emailForm.name || emailForm.email.split("@")[0],
           subject: emailForm.subject || "Contato via Showcase",
           body: emailForm.body,
+          agentId: activeAgent.id,
+          agentEmail: activeAgent.emailAddress,
+          agentName: activeAgent.name,
+          hasAttachment: !!emailAttachment,
+          attachmentName: emailAttachment?.name,
         }),
       })
       const data = await response.json()
@@ -397,8 +425,10 @@ export default function ShowcasePage() {
 
   const resetEmailDemo = () => {
     setEmailForm({ name: "", email: "", subject: "", body: "" })
+    setEmailAttachment(null)
     setEmailResponse(null)
     setEmailSent(false)
+    if (fileInputRef.current) fileInputRef.current.value = ""
   }
 
   const switchAgent = (agent: AgentDef) => {
@@ -407,6 +437,8 @@ export default function ShowcasePage() {
     setMessages([{ role: "assistant", content: agent.welcomeMessage }])
     setChatOpen(false)
     setInput("")
+    // Reset email demo ao trocar de agente
+    resetEmailDemo()
   }
 
   useEffect(() => {
@@ -914,7 +946,7 @@ export default function ShowcasePage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Demo por Email</h3>
-                  <p className="text-xs text-slate-400">Envie um email para a Sofia e veja a resposta do agente real</p>
+                  <p className="text-xs text-slate-400">Envie um email para a {activeAgent.name} e veja a resposta do agente real</p>
                 </div>
               </div>
 
@@ -928,7 +960,7 @@ export default function ShowcasePage() {
                         type="text"
                         value={emailForm.name}
                         onChange={(e) => setEmailForm(prev => ({ ...prev, name: e.target.value }))}
-                        placeholder="Maria Silva"
+                        placeholder={activeAgent.emailPlaceholders.name}
                         className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
                       />
                     </div>
@@ -939,7 +971,7 @@ export default function ShowcasePage() {
                         required
                         value={emailForm.email}
                         onChange={(e) => setEmailForm(prev => ({ ...prev, email: e.target.value }))}
-                        placeholder="maria@email.com"
+                        placeholder={activeAgent.emailPlaceholders.email}
                         className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
                       />
                     </div>
@@ -951,7 +983,7 @@ export default function ShowcasePage() {
                       type="text"
                       value={emailForm.subject}
                       onChange={(e) => setEmailForm(prev => ({ ...prev, subject: e.target.value }))}
-                      placeholder="Agendamento de limpeza de pele"
+                      placeholder={activeAgent.emailPlaceholders.subject}
                       className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
                     />
                   </div>
@@ -963,14 +995,51 @@ export default function ShowcasePage() {
                       rows={4}
                       value={emailForm.body}
                       onChange={(e) => setEmailForm(prev => ({ ...prev, body: e.target.value }))}
-                      placeholder="Olá, gostaria de saber os horários disponíveis para uma limpeza de pele..."
+                      placeholder={activeAgent.emailPlaceholders.body}
                       className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors resize-none"
                     />
                   </div>
 
+                  {/* Attachment field */}
+                  <div>
+                    <label className="block text-xs text-slate-400 mb-1.5">Anexo</label>
+                    <div className="relative">
+                      <input
+                        ref={fileInputRef}
+                        type="file"
+                        onChange={(e) => setEmailAttachment(e.target.files?.[0] || null)}
+                        className="hidden"
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.csv,.txt"
+                      />
+                      {emailAttachment ? (
+                        <div className="flex items-center gap-2 h-10 rounded-lg border border-slate-700 bg-slate-800 px-3">
+                          <Paperclip className="h-4 w-4 text-orange-400 shrink-0" />
+                          <span className="text-sm text-white truncate flex-1">{emailAttachment.name}</span>
+                          <span className="text-xs text-slate-500 shrink-0">{(emailAttachment.size / 1024).toFixed(0)} KB</span>
+                          <button
+                            type="button"
+                            onClick={() => { setEmailAttachment(null); if (fileInputRef.current) fileInputRef.current.value = "" }}
+                            className="text-slate-500 hover:text-white transition-colors"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="flex items-center gap-2 h-10 w-full rounded-lg border border-dashed border-slate-700 bg-slate-800/50 px-3 text-sm text-slate-500 hover:border-orange-500/50 hover:text-slate-400 transition-colors"
+                        >
+                          <Paperclip className="h-4 w-4" />
+                          Anexar arquivo (opcional)
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="flex items-center justify-between pt-1">
                     <p className="text-xs text-slate-500">
-                      Para: <span className="text-orange-400">sofia@reply.digitai.app</span>
+                      Para: <span className="text-orange-400">{activeAgent.emailAddress}</span>
                     </p>
                     <button
                       type="submit"
@@ -993,8 +1062,14 @@ export default function ShowcasePage() {
                     </div>
                     <div className="text-xs text-slate-400 space-y-1">
                       <p><span className="text-slate-500">De:</span> {emailForm.name || emailForm.email} &lt;{emailForm.email}&gt;</p>
-                      <p><span className="text-slate-500">Para:</span> sofia@reply.digitai.app</p>
+                      <p><span className="text-slate-500">Para:</span> {activeAgent.emailAddress}</p>
                       {emailForm.subject && <p><span className="text-slate-500">Assunto:</span> {emailForm.subject}</p>}
+                      {emailAttachment && (
+                        <p className="flex items-center gap-1">
+                          <Paperclip className="h-3 w-3 text-orange-400" />
+                          <span className="text-slate-500">Anexo:</span> {emailAttachment.name}
+                        </p>
+                      )}
                     </div>
                     <p className="mt-2 text-sm text-slate-300 whitespace-pre-wrap">{emailForm.body}</p>
                   </div>
@@ -1012,7 +1087,7 @@ export default function ShowcasePage() {
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500">
                           <Bot className="h-3.5 w-3.5 text-white" />
                         </div>
-                        <span className="text-sm font-medium text-white">Sofia respondeu</span>
+                        <span className="text-sm font-medium text-white">{activeAgent.name} respondeu</span>
                       </div>
                       <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{emailResponse}</p>
                     </div>

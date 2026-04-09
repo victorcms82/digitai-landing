@@ -6,11 +6,15 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || ""
 
 export async function POST(request: NextRequest) {
   try {
-    const { senderEmail, senderName, subject, body } = await request.json() as {
+    const { senderEmail, senderName, subject, body, agentEmail, agentName, hasAttachment, attachmentName } = await request.json() as {
       senderEmail: string
       senderName: string
       subject: string
       body: string
+      agentEmail?: string
+      agentName?: string
+      hasAttachment?: boolean
+      attachmentName?: string
     }
 
     if (!senderEmail || !body) {
@@ -20,6 +24,9 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const toEmail = agentEmail || "sofia@reply.digitai.app"
+    const resolvedAgentName = agentName || "Sofia"
+
     // Generate unique message ID for this demo interaction
     const messageId = `<demo_${Date.now()}_${Math.random().toString(36).slice(2, 8)}@showcase.digitai.app>`
 
@@ -27,14 +34,16 @@ export async function POST(request: NextRequest) {
     const n8nPayload = {
       sender_email: senderEmail,
       sender_name: senderName || senderEmail.split("@")[0],
-      to_email: "sofia@reply.digitai.app",
+      to_email: toEmail,
       subject: subject || "Demo Showcase",
-      body,
+      body: hasAttachment && attachmentName
+        ? `${body}\n\n[Anexo: ${attachmentName}]`
+        : body,
       message_id: messageId,
       in_reply_to: "",
       references: [],
       timestamp: new Date().toISOString(),
-      has_attachments: false,
+      has_attachments: hasAttachment || false,
     }
 
     const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
@@ -81,7 +90,7 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({
             success: true,
             agentResponse: data[0].response_content,
-            agentName: "Sofia",
+            agentName: resolvedAgentName,
           })
         }
       }
@@ -91,7 +100,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       agentResponse: "O agente recebeu seu email e está processando. Em um cenário real, a resposta chegaria diretamente na sua caixa de entrada.",
-      agentName: "Sofia",
+      agentName: resolvedAgentName,
       timeout: true,
     })
 
