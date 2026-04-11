@@ -533,6 +533,13 @@ export default function ShowcasePage() {
               Testar agora
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
+            <a
+              href="/tour"
+              className="group inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/50 px-6 py-3.5 text-sm font-medium text-slate-200 transition-all hover:border-slate-600 hover:bg-slate-900/80 active:scale-95"
+            >
+              Ver tour do sistema
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
 
           {/* Scroll indicator */}

@@ -46,11 +46,19 @@ export default function LandingPage() {
           <div className="text-xl sm:text-2xl font-bold text-white">
             Digit<span className="text-blue-500">AI</span>
           </div>
-          <Link href="/demo">
-            <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500/10 active:bg-blue-500/20">
-              Testar Agora
-            </Button>
-          </Link>
+          <div className="flex items-center gap-3 sm:gap-5">
+            <Link
+              href="/tour"
+              className="text-xs sm:text-sm text-slate-300 hover:text-white transition-colors"
+            >
+              Tour
+            </Link>
+            <Link href="/demo">
+              <Button variant="outline" size="sm" className="border-blue-500 text-blue-400 hover:bg-blue-500/10 active:bg-blue-500/20">
+                Testar Agora
+              </Button>
+            </Link>
+          </div>
         </nav>
       </header>
 
