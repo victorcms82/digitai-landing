@@ -324,14 +324,19 @@ export default function DemoPage() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base ${
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base whitespace-pre-wrap [&_strong]:font-semibold ${
                     message.role === "user"
                       ? "bg-blue-600 text-white"
                       : "bg-slate-800 text-slate-100"
                   }`}
-                >
-                  {message.content}
-                </div>
+                  dangerouslySetInnerHTML={{
+                    __html: message.content
+                      .replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;")
+                      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"),
+                  }}
+                />
                 {message.role === "user" && (
                   <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-700">
                     <User className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
