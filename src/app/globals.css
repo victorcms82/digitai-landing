@@ -1,49 +1,56 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   Digitai Design System — SPEC v1.0 §2.1 (DSG-4, 17/04/2026)
+   Warm dark base · cyan accent · DM Sans typography
+   ═══════════════════════════════════════════════════════════════ */
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    /* Light mode — warm light (Digitai SPEC v1.0 §2.1) */
+    --background: 32 67% 91%;
+    --foreground: 30 11% 7%;
+    --card: 35 72% 94%;
+    --card-foreground: 30 11% 7%;
+    --popover: 35 72% 94%;
+    --popover-foreground: 30 11% 7%;
+    --primary: 192 91% 37%;
+    --primary-foreground: 35 72% 94%;
+    --secondary: 33 43% 89%;
+    --secondary-foreground: 30 22% 27%;
+    --muted: 33 43% 89%;
+    --muted-foreground: 30 12% 49%;
+    --accent: 33 43% 89%;
+    --accent-foreground: 30 22% 27%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 35 72% 94%;
+    --border: 34 22% 76%;
+    --input: 34 22% 76%;
+    --ring: 192 91% 37%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    /* Dark mode — warm dark (Digitai SPEC v1.0 §2.1) */
+    --background: 30 11% 7%;
+    --foreground: 32 67% 91%;
+    --card: 30 15% 11%;
+    --card-foreground: 32 67% 91%;
+    --popover: 24 11% 9%;
+    --popover-foreground: 32 67% 91%;
+    --primary: 189 95% 43%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 30 15% 11%;
+    --secondary-foreground: 32 67% 91%;
+    --muted: 24 11% 9%;
+    --muted-foreground: 30 12% 49%;
+    --accent: 30 15% 11%;
+    --accent-foreground: 32 67% 91%;
+    --destructive: 0 68% 82%;
+    --destructive-foreground: 0 0% 4%;
+    --border: 24 14% 15%;
+    --input: 24 14% 15%;
+    --ring: 189 95% 43%;
   }
 }
 
@@ -71,8 +78,26 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Digitai Design Tokens — hex (SPEC v1.0 §2.1)
+     Available as Tailwind classes: bg-digitai-deep, text-digitai-cyan, etc. */
+  --color-digitai-deep: #141210;
+  --color-digitai-surface: #1A1715;
+  --color-digitai-card: #1F1B17;
+  --color-digitai-card-hover: #241F1A;
+  --color-digitai-border: #2A2420;
+  --color-digitai-border-hover: #3A332D;
+  --color-digitai-cream: #F5E8D9;
+  --color-digitai-warm: #B8A99A;
+  --color-digitai-muted: #8A7D70;
+  --color-digitai-cyan: #06B6D4;
+  --color-digitai-cyan-glow: #22D3EE;
+  --color-digitai-cyan-muted: #0891B2;
+  --color-digitai-success: #86EFAC;
+  --color-digitai-warning: #FCD34D;
+  --color-digitai-error: #FCA5A5;
 }
 
 @layer base {
@@ -81,5 +106,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

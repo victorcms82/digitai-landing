@@ -1,28 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import { PWAProvider } from "@/components/pwa-provider";
 import { InstallFab } from "@/components/install-fab";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "DigitAI - Agentes de IA para WhatsApp",
-  description: "Transforme seu atendimento no WhatsApp com agentes de inteligência artificial. Automatize respostas, agendamentos e conversões 24/7.",
-  keywords: ["whatsapp", "inteligência artificial", "atendimento automático", "chatbot", "agendamento"],
+  title: "Digitai — Funcionários de IA pra quem trabalha",
+  description: "Plataforma de ~90 tipos de funcionários de IA. Do advogado solo à clínica com 50 funcionários.",
+  keywords: ["funcionários de ia", "inteligência artificial", "agentes ia", "automação", "atendimento automático"],
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "DigitAI",
+    title: "Digitai",
     startupImage: [
       {
         url: "/splash/splash-1170x2532.png",
@@ -47,15 +49,15 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "DigitAI - Agentes de IA para WhatsApp",
-    description: "Transforme seu atendimento no WhatsApp com agentes de inteligência artificial.",
+    title: "Digitai — Funcionários de IA pra quem trabalha",
+    description: "Plataforma de ~90 tipos de funcionários de IA. Do advogado solo à clínica com 50 funcionários.",
     type: "website",
     images: ["/og-image.png"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#020617",
+  themeColor: "#141210",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -77,7 +79,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <PWAProvider>
           {children}

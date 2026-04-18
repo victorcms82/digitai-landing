@@ -1,12 +1,12 @@
 {
-  "name": "DigitAI Demo - Teste seu Agente de IA",
-  "short_name": "DigitAI Demo",
-  "description": "Agentes de IA que atendem, agendam e convertem seus clientes automaticamente via WhatsApp",
+  "name": "Digitai — Funcionários de IA pra quem trabalha",
+  "short_name": "Digitai",
+  "description": "Plataforma de ~90 tipos de funcionários de IA. Do advogado solo à clínica com 50 funcionários.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#020617",
-  "theme_color": "#059669",
+  "background_color": "#141210",
+  "theme_color": "#141210",
   "orientation": "portrait-primary",
   "categories": ["business", "productivity", "utilities"],
   "lang": "pt-BR",
@@ -39,9 +39,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Criar Agente",
+      "name": "Criar Funcionário de IA",
       "short_name": "Demo",
-      "description": "Criar e testar seu agente de IA",
+      "description": "Criar e testar seu funcionário de IA",
       "url": "/demo",
       "icons": [
         {
