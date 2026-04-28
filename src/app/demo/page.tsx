@@ -168,9 +168,9 @@ export default function DemoPage() {
 
   if (step === "setup") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="min-h-screen bg-gradient-to-b from-[#141210] via-[#1A1715] to-[#141210]">
         <header className="container mx-auto px-4 py-4 sm:py-6">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white active:text-slate-300 p-2 -ml-2 rounded-lg">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#8A7D70] hover:text-white active:text-[#A89C8C] p-2 -ml-2 rounded-lg">
             <ArrowLeft className="h-4 w-4" />
             <span className="text-sm">Voltar</span>
           </Link>
@@ -183,39 +183,39 @@ export default function DemoPage() {
                 <Sparkles className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
               </div>
               <h1 className="mb-2 text-2xl sm:text-3xl font-bold text-white">Crie seu Agente de IA</h1>
-              <p className="text-sm sm:text-base text-slate-400 px-4">
+              <p className="text-sm sm:text-base text-[#8A7D70] px-4">
                 Preencha as informações do seu negócio e veja a mágica acontecer
               </p>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+            <div className="rounded-xl border border-[#2A2420] bg-[#1F1B17]/50 p-4 sm:p-6">
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className="text-sm text-slate-300">Nome do Negócio *</Label>
+                  <Label htmlFor="name" className="text-sm text-[#A89C8C]">Nome do Negócio *</Label>
                   <Input
                     id="name"
                     placeholder="Ex: Clínica Dra. Maria Silva"
                     value={businessInfo.name}
                     onChange={(e) => setBusinessInfo({ ...businessInfo, name: e.target.value })}
-                    className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+                    className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="type" className="text-sm text-slate-300">Tipo de Negócio *</Label>
+                  <Label htmlFor="type" className="text-sm text-[#A89C8C]">Tipo de Negócio *</Label>
                   <Select
                     value={businessInfo.type}
                     onValueChange={(value: BusinessType) => setBusinessInfo({ ...businessInfo, type: value })}
                   >
-                    <SelectTrigger className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base">
+                    <SelectTrigger className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="border-slate-700 bg-slate-800 max-h-[300px]">
+                    <SelectContent className="border-[#3A332D] bg-[#2A2420] max-h-[300px]">
                       {Object.entries(businessTypeLabels).map(([value, label]) => (
                         <SelectItem
                           key={value}
                           value={value}
-                          className="text-white hover:bg-slate-700 focus:bg-slate-700 py-3 text-base"
+                          className="text-white hover:bg-[#3A332D] focus:bg-[#3A332D] py-3 text-base"
                         >
                           {label}
                         </SelectItem>
@@ -225,46 +225,46 @@ export default function DemoPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="services" className="text-sm text-slate-300">Principais Serviços *</Label>
+                  <Label htmlFor="services" className="text-sm text-[#A89C8C]">Principais Serviços *</Label>
                   <Input
                     id="services"
                     placeholder="Ex: Consultas, botox, preenchimento"
                     value={businessInfo.services}
                     onChange={(e) => setBusinessInfo({ ...businessInfo, services: e.target.value })}
-                    className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+                    className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="hours" className="text-sm text-slate-300">Horário de Funcionamento</Label>
+                  <Label htmlFor="hours" className="text-sm text-[#A89C8C]">Horário de Funcionamento</Label>
                   <Input
                     id="hours"
                     placeholder="Ex: Seg-Sex, 8h às 18h"
                     value={businessInfo.hours}
                     onChange={(e) => setBusinessInfo({ ...businessInfo, hours: e.target.value })}
-                    className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+                    className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="location" className="text-sm text-slate-300">Localização</Label>
+                  <Label htmlFor="location" className="text-sm text-[#A89C8C]">Localização</Label>
                   <Input
                     id="location"
                     placeholder="Ex: São Paulo - SP"
                     value={businessInfo.location}
                     onChange={(e) => setBusinessInfo({ ...businessInfo, location: e.target.value })}
-                    className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+                    className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="differentials" className="text-sm text-slate-300">Diferenciais</Label>
+                  <Label htmlFor="differentials" className="text-sm text-[#A89C8C]">Diferenciais</Label>
                   <Input
                     id="differentials"
                     placeholder="Ex: 10 anos de experiência"
                     value={businessInfo.differentials}
                     onChange={(e) => setBusinessInfo({ ...businessInfo, differentials: e.target.value })}
-                    className="mt-1.5 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+                    className="mt-1.5 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
                   />
                 </div>
 
@@ -286,25 +286,25 @@ export default function DemoPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#141210] via-[#1A1715] to-[#141210]">
       {/* Header */}
-      <header className="sticky top-0 z-10 border-b border-slate-800 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/80">
+      <header className="sticky top-0 z-10 border-b border-[#2A2420] bg-[#1A1715]/95 backdrop-blur supports-[backdrop-filter]:bg-[#1A1715]/80">
         <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:py-4">
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setStep("setup")}
-              className="text-slate-400 hover:text-white active:text-slate-300 p-2 -ml-2 rounded-lg"
+              className="text-[#8A7D70] hover:text-white active:text-[#A89C8C] p-2 -ml-2 rounded-lg"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <div className="min-w-0">
               <h1 className="font-semibold text-white text-sm sm:text-base truncate">{businessInfo.name}</h1>
-              <p className="text-xs sm:text-sm text-slate-400">Agente de IA - Demo</p>
+              <p className="text-xs sm:text-sm text-[#8A7D70]">Agente de IA - Demo</p>
             </div>
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-xs sm:text-sm text-slate-400">Online</span>
+            <span className="text-xs sm:text-sm text-[#8A7D70]">Online</span>
           </div>
         </div>
       </header>
@@ -327,7 +327,7 @@ export default function DemoPage() {
                   className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base whitespace-pre-wrap [&_strong]:font-semibold ${
                     message.role === "user"
                       ? "bg-blue-600 text-white"
-                      : "bg-slate-800 text-slate-100"
+                      : "bg-[#2A2420] text-[#F5E8D9]"
                   }`}
                   dangerouslySetInnerHTML={{
                     __html: message.content
@@ -338,7 +338,7 @@ export default function DemoPage() {
                   }}
                 />
                 {message.role === "user" && (
-                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-700">
+                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#3A332D]">
                     <User className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                   </div>
                 )}
@@ -349,8 +349,8 @@ export default function DemoPage() {
                 <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600">
                   <Bot className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                 </div>
-                <div className="rounded-2xl bg-slate-800 px-4 py-3">
-                  <Loader2 className="h-5 w-5 animate-spin text-slate-400" />
+                <div className="rounded-2xl bg-[#2A2420] px-4 py-3">
+                  <Loader2 className="h-5 w-5 animate-spin text-[#8A7D70]" />
                 </div>
               </div>
             )}
@@ -361,15 +361,15 @@ export default function DemoPage() {
 
       {/* Suggestions */}
       {messages.length <= 2 && (
-        <div className="border-t border-slate-800 bg-slate-900/50 px-3 sm:px-4 py-3">
+        <div className="border-t border-[#2A2420] bg-[#1F1B17]/50 px-3 sm:px-4 py-3">
           <div className="mx-auto max-w-2xl">
-            <p className="mb-2 text-xs text-slate-500">Sugestões de perguntas:</p>
+            <p className="mb-2 text-xs text-[#7A6D60]">Sugestões de perguntas:</p>
             <div className="flex flex-wrap gap-2">
               {suggestionsByType[businessInfo.type].map((suggestion) => (
                 <button
                   key={suggestion}
                   onClick={() => handleSuggestionClick(suggestion)}
-                  className="rounded-full border border-slate-700 bg-slate-800 px-3 py-2 text-xs sm:text-sm text-slate-300 transition-colors hover:border-blue-500 hover:text-white active:bg-slate-700"
+                  className="rounded-full border border-[#3A332D] bg-[#2A2420] px-3 py-2 text-xs sm:text-sm text-[#A89C8C] transition-colors hover:border-[#06B6D4] hover:text-white active:bg-[#3A332D]"
                 >
                   {suggestion}
                 </button>
@@ -380,7 +380,7 @@ export default function DemoPage() {
       )}
 
       {/* Input */}
-      <div className="sticky bottom-0 border-t border-slate-800 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/80 p-3 sm:p-4">
+      <div className="sticky bottom-0 border-t border-[#2A2420] bg-[#1A1715]/95 backdrop-blur supports-[backdrop-filter]:bg-[#1A1715]/80 p-3 sm:p-4">
         <div className="mx-auto max-w-2xl">
           <form
             onSubmit={(e) => {
@@ -394,7 +394,7 @@ export default function DemoPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Digite sua mensagem..."
-              className="flex-1 h-11 sm:h-10 border-slate-700 bg-slate-800 text-white text-base placeholder:text-slate-500"
+              className="flex-1 h-11 sm:h-10 border-[#3A332D] bg-[#2A2420] text-white text-base placeholder:text-[#7A6D60]"
               disabled={isLoading}
             />
             <Button
@@ -409,7 +409,7 @@ export default function DemoPage() {
       </div>
 
       {/* CTA Banner - Clickable */}
-      <div className="border-t border-slate-800 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 p-3 sm:p-4">
+      <div className="border-t border-[#2A2420] bg-gradient-to-r from-blue-600/20 to-cyan-600/20 p-3 sm:p-4">
         <a
           href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Testei%20o%20demo%20do%20Digitai%20e%20quero%20saber%20mais!"
           target="_blank"
@@ -418,7 +418,7 @@ export default function DemoPage() {
         >
           <div className="min-w-0">
             <p className="font-medium text-white text-sm sm:text-base">Gostou do resultado?</p>
-            <p className="text-xs sm:text-sm text-slate-400 truncate">Tenha seu agente no WhatsApp real</p>
+            <p className="text-xs sm:text-sm text-[#8A7D70] truncate">Tenha seu agente no WhatsApp real</p>
           </div>
           <Button className="bg-green-600 hover:bg-green-700 active:bg-green-800 h-10 sm:h-9 text-sm flex-shrink-0">
             <Phone className="mr-1.5 h-4 w-4" />

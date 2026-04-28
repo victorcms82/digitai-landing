@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowLeft, Mail } from "lucide-react"
+import { DigitaiBrandLogo } from "@/components/ui/digitai-brand-logo"
 
 export const metadata: Metadata = {
   title: "Política de Privacidade — Digitai",
@@ -11,16 +12,16 @@ export const metadata: Metadata = {
 
 export default function PrivacidadePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-b from-[#141210] via-[#1A1715] to-[#141210]">
       {/* Header */}
       <header className="container mx-auto px-4 py-4 sm:py-6">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl sm:text-2xl font-bold text-white">
-            Digit<span className="text-blue-500">AI</span>
+          <Link href="/" className="flex items-center">
+            <DigitaiBrandLogo size="md" theme="dark" />
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 active:text-blue-500 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[#22D3EE] hover:text-[#67E8F9] active:text-[#06B6D4] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar
@@ -30,18 +31,18 @@ export default function PrivacidadePage() {
 
       <main className="container mx-auto px-4 py-8 sm:py-12 max-w-3xl">
         <div className="mb-8 sm:mb-12">
-          <div className="mb-4 inline-block rounded-full bg-blue-500/10 px-3 py-1.5 text-xs sm:text-sm text-blue-400">
+          <div className="mb-4 inline-block rounded-full bg-[#06B6D4]/10 px-3 py-1.5 text-xs sm:text-sm text-[#22D3EE]">
             Transparência e proteção de dados
           </div>
           <h1 className="mb-3 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
             Política de Privacidade
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-[#7A6D60]">
             Última atualização: 11 de abril de 2026
           </p>
         </div>
 
-        <div className="space-y-10 text-base sm:text-lg text-slate-300 leading-relaxed">
+        <div className="space-y-10 text-base sm:text-lg text-[#A89C8C] leading-relaxed">
           {/* Introdução */}
           <section>
             <p>
@@ -67,13 +68,13 @@ export default function PrivacidadePage() {
               Os dados pessoais tratados pelos agentes da Digitai são
               controlados por:
             </p>
-            <div className="mt-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+            <div className="mt-4 rounded-xl border border-[#2A2420] bg-[#1F1B17]/50 p-4 sm:p-6">
               <p className="font-semibold text-white">Evolute Digital</p>
-              <p className="mt-2 text-sm sm:text-base text-slate-400">
+              <p className="mt-2 text-sm sm:text-base text-[#8A7D70]">
                 Contato:{" "}
                 <a
                   href="mailto:contato@evolutedigital.com.br"
-                  className="text-blue-400 hover:text-blue-300 underline"
+                  className="text-[#22D3EE] hover:text-[#67E8F9] underline"
                 >
                   contato@evolutedigital.com.br
                 </a>
@@ -91,7 +92,7 @@ export default function PrivacidadePage() {
               demais agentes atuais ou futuros da plataforma), podemos coletar
               as seguintes informações pessoais:
             </p>
-            <ul className="mt-4 space-y-2 pl-5 list-disc marker:text-blue-500">
+            <ul className="mt-4 space-y-2 pl-5 list-disc marker:text-[#06B6D4]">
               <li>Nome completo</li>
               <li>Número de telefone (WhatsApp)</li>
               <li>Endereço de e-mail</li>
@@ -119,7 +120,7 @@ export default function PrivacidadePage() {
             <p>
               Os dados coletados são utilizados para as seguintes finalidades:
             </p>
-            <ul className="mt-4 space-y-2 pl-5 list-disc marker:text-blue-500">
+            <ul className="mt-4 space-y-2 pl-5 list-disc marker:text-[#06B6D4]">
               <li>Atendimento demonstrativo por meio da plataforma Digitai</li>
               <li>Agendamento de serviços, consultas e reuniões</li>
               <li>Envio de documentos, propostas e orçamentos</li>
@@ -139,7 +140,7 @@ export default function PrivacidadePage() {
               O tratamento dos seus dados pessoais se fundamenta nas seguintes
               bases legais previstas na LGPD:
             </p>
-            <ul className="mt-4 space-y-3 pl-5 list-disc marker:text-blue-500">
+            <ul className="mt-4 space-y-3 pl-5 list-disc marker:text-[#06B6D4]">
               <li>
                 <span className="font-semibold text-white">
                   Consentimento do titular
@@ -166,7 +167,7 @@ export default function PrivacidadePage() {
               De acordo com o Art. 18 da LGPD, você tem os seguintes direitos
               sobre os seus dados pessoais:
             </p>
-            <ul className="mt-4 space-y-3 pl-5 list-disc marker:text-blue-500">
+            <ul className="mt-4 space-y-3 pl-5 list-disc marker:text-[#06B6D4]">
               <li>
                 <span className="font-semibold text-white">Acesso</span> —
                 confirmar a existência e acessar os dados que tratamos a seu
@@ -216,16 +217,16 @@ export default function PrivacidadePage() {
               Para exercer qualquer um dos direitos listados acima, envie uma
               solicitação para o e-mail abaixo:
             </p>
-            <div className="mt-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6 flex items-start gap-3">
-              <Mail className="h-5 w-5 text-blue-500 flex-shrink-0 mt-1" />
+            <div className="mt-4 rounded-xl border border-[#2A2420] bg-[#1F1B17]/50 p-4 sm:p-6 flex items-start gap-3">
+              <Mail className="h-5 w-5 text-[#06B6D4] flex-shrink-0 mt-1" />
               <div>
                 <a
                   href="mailto:contato@evolutedigital.com.br"
-                  className="text-blue-400 hover:text-blue-300 underline font-semibold break-all"
+                  className="text-[#22D3EE] hover:text-[#67E8F9] underline font-semibold break-all"
                 >
                   contato@evolutedigital.com.br
                 </a>
-                <p className="mt-2 text-sm text-slate-400">
+                <p className="mt-2 text-sm text-[#8A7D70]">
                   Responderemos a todas as solicitações no prazo máximo de 15
                   (quinze) dias úteis, contados a partir do recebimento.
                 </p>
@@ -297,10 +298,10 @@ export default function PrivacidadePage() {
           </section>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-800">
+        <div className="mt-12 pt-8 border-t border-[#2A2420]">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 active:text-blue-500 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[#22D3EE] hover:text-[#67E8F9] active:text-[#06B6D4] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar para a página inicial
@@ -309,8 +310,8 @@ export default function PrivacidadePage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-6 sm:py-8 mt-8 pb-20">
-        <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-slate-500">
+      <footer className="border-t border-[#2A2420] py-6 sm:py-8 mt-8 pb-20">
+        <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-[#7A6D60]">
           <p>&copy; 2026 Digitai — Evolute Digital. Todos os direitos reservados.</p>
         </div>
       </footer>

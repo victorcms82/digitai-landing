@@ -22,6 +22,7 @@ import {
   Users,
   Utensils,
 } from "lucide-react"
+import { DigitaiBrandLogo } from "@/components/ui/digitai-brand-logo"
 
 export const metadata: Metadata = {
   title: "Tour do Sistema | Digitai",
@@ -103,16 +104,16 @@ const adminScreens = [
 
 export default function TourPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-b from-[#141210] via-[#1A1715] to-[#141210]">
       {/* Header */}
       <header className="container mx-auto px-4 py-4 sm:py-6">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="text-xl sm:text-2xl font-bold text-white">
-            Digit<span className="text-blue-500">AI</span>
+          <Link href="/" className="flex items-center">
+            <DigitaiBrandLogo size="md" theme="dark" />
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 active:text-blue-500 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[#22D3EE] hover:text-[#67E8F9] active:text-[#06B6D4] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar
@@ -124,7 +125,7 @@ export default function TourPage() {
         {/* Seção 1 — Hero */}
         <section className="container mx-auto px-4 py-10 sm:py-16 text-center">
           <div className="mx-auto max-w-3xl">
-            <div className="mb-5 inline-block rounded-full bg-blue-500/10 px-3 py-1.5 text-xs sm:text-sm text-blue-400">
+            <div className="mb-5 inline-block rounded-full bg-[#06B6D4]/10 px-3 py-1.5 text-xs sm:text-sm text-[#22D3EE]">
               Tour do sistema
             </div>
             <h1 className="mb-5 sm:mb-6 text-3xl sm:text-5xl md:text-6xl font-bold leading-tight text-white">
@@ -133,7 +134,7 @@ export default function TourPage() {
                 pro seu negócio.
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-base sm:text-xl text-slate-300 leading-relaxed">
+            <p className="mx-auto max-w-2xl text-base sm:text-xl text-[#A89C8C] leading-relaxed">
               Trabalham 24 horas por dia, todos os dias. Atendem, agendam, geram documentos,
               fazem orçamentos, relatórios, recebem pedidos, tiram dúvidas — tudo pelo
               WhatsApp, site, email ou Instagram.
@@ -147,7 +148,7 @@ export default function TourPage() {
             <h2 className="mb-4 text-2xl sm:text-4xl font-bold text-white leading-tight">
               Funciona pra qualquer tipo de empresa.
             </h2>
-            <p className="mx-auto mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg text-slate-400">
+            <p className="mx-auto mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg text-[#8A7D70]">
               Clínica, escritório, restaurante, imobiliária, consultório, loja, academia… Se
               tem clientes e operação, o Digitai serve.
             </p>
@@ -155,10 +156,10 @@ export default function TourPage() {
               {niches.map((niche) => (
                 <div
                   key={niche.label}
-                  className="flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5 transition-colors hover:border-blue-500/40"
+                  className="flex flex-col items-center justify-center gap-2 rounded-xl border border-[#2A2420] bg-[#1F1B17]/50 p-4 sm:p-5 transition-colors hover:border-[#06B6D4]/40"
                 >
-                  <niche.icon className="h-7 w-7 sm:h-8 sm:w-8 text-blue-400" />
-                  <span className="text-sm sm:text-base text-slate-200 font-medium">
+                  <niche.icon className="h-7 w-7 sm:h-8 sm:w-8 text-[#22D3EE]" />
+                  <span className="text-sm sm:text-base text-[#E8DFD0] font-medium">
                     {niche.label}
                   </span>
                 </div>
@@ -170,19 +171,19 @@ export default function TourPage() {
         {/* Seção 3 — Conhece o negócio */}
         <section className="container mx-auto px-4 py-10 sm:py-16">
           <div className="mx-auto max-w-4xl">
-            <div className="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-6 sm:p-10 md:p-14">
+            <div className="rounded-2xl border border-[#2A2420] bg-gradient-to-br from-[#1A1715] to-[#141210] p-6 sm:p-10 md:p-14">
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">
-                  <Brain className="h-5 w-5 text-blue-400" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#06B6D4]/10">
+                  <Brain className="h-5 w-5 text-[#22D3EE]" />
                 </div>
-                <span className="text-xs sm:text-sm uppercase tracking-wider text-blue-400 font-semibold">
+                <span className="text-xs sm:text-sm uppercase tracking-wider text-[#22D3EE] font-semibold">
                   Inteligência treinada no seu negócio
                 </span>
               </div>
               <h2 className="mb-5 text-2xl sm:text-4xl font-bold text-white leading-tight">
                 Conhece o seu negócio de verdade.
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-[#A89C8C] leading-relaxed">
                 O agente aprende seus serviços, preços, protocolos, catálogo. Não dá resposta
                 genérica — responde como um funcionário treinado, que sabe como a casa
                 funciona.
@@ -193,7 +194,7 @@ export default function TourPage() {
                   "Segue o seu jeito de atender, não um roteiro genérico",
                   "Aprende regras da casa: horários, exceções, condições",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm sm:text-base text-slate-300">
+                  <li key={item} className="flex items-start gap-3 text-sm sm:text-base text-[#A89C8C]">
                     <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -209,7 +210,7 @@ export default function TourPage() {
             <h2 className="mb-4 text-2xl sm:text-4xl font-bold text-white leading-tight">
               Seus clientes escolhem onde falar.
             </h2>
-            <p className="mx-auto mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg text-slate-400">
+            <p className="mx-auto mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg text-[#8A7D70]">
               WhatsApp, chat no site, email, Instagram. O agente é o mesmo, atende em todos
               — com o mesmo tom e o mesmo conhecimento.
             </p>
@@ -217,7 +218,7 @@ export default function TourPage() {
               {channels.map((channel) => (
                 <div
                   key={channel.label}
-                  className="flex items-start gap-4 rounded-xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 text-left transition-colors hover:border-blue-500/40"
+                  className="flex items-start gap-4 rounded-xl border border-[#2A2420] bg-[#1F1B17]/50 p-5 sm:p-6 text-left transition-colors hover:border-[#06B6D4]/40"
                 >
                   <div
                     className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${channel.color}`}
@@ -228,7 +229,7 @@ export default function TourPage() {
                     <h3 className="mb-1 text-base sm:text-lg font-semibold text-white">
                       {channel.label}
                     </h3>
-                    <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#8A7D70] leading-relaxed">
                       {channel.desc}
                     </p>
                   </div>
@@ -245,7 +246,7 @@ export default function TourPage() {
               <h2 className="mb-4 text-2xl sm:text-4xl font-bold text-white leading-tight">
                 Tudo na sua mão.
               </h2>
-              <p className="mx-auto max-w-2xl text-base sm:text-lg text-slate-400">
+              <p className="mx-auto max-w-2xl text-base sm:text-lg text-[#8A7D70]">
                 Um painel com gráficos, conversas, agenda e relatórios. O dono acompanha tudo
                 em tempo real — do celular ou do computador.
               </p>
@@ -254,16 +255,16 @@ export default function TourPage() {
               {adminScreens.map((screen) => (
                 <div
                   key={screen.title}
-                  className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 shadow-lg shadow-blue-500/5"
+                  className="overflow-hidden rounded-2xl border border-[#2A2420] bg-[#1A1715]/60 shadow-lg shadow-blue-500/5"
                 >
                   {/* Fake window bar */}
-                  <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-900 px-4 py-2.5">
+                  <div className="flex items-center gap-2 border-b border-[#2A2420] bg-[#1A1715] px-4 py-2.5">
                     <div className="flex gap-1.5">
                       <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
                       <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                       <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
                     </div>
-                    <span className="ml-2 text-xs text-slate-500">
+                    <span className="ml-2 text-xs text-[#7A6D60]">
                       admin.digitai.app · {screen.title}
                     </span>
                   </div>
@@ -271,14 +272,14 @@ export default function TourPage() {
                   {/* Content */}
                   <div className="p-5 sm:p-6">
                     <div className="mb-4 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
-                        <screen.icon className="h-5 w-5 text-blue-400" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#06B6D4]/10">
+                        <screen.icon className="h-5 w-5 text-[#22D3EE]" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold text-white">
                         {screen.title}
                       </h3>
                     </div>
-                    <p className="mb-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+                    <p className="mb-4 text-sm sm:text-base text-[#A89C8C] leading-relaxed">
                       {screen.desc}
                     </p>
 
@@ -287,12 +288,12 @@ export default function TourPage() {
                       {screen.mockLines.map((line) => (
                         <div
                           key={line}
-                          className="flex items-center justify-between rounded-lg border border-dashed border-slate-700/70 bg-slate-950/40 px-3 py-2.5"
+                          className="flex items-center justify-between rounded-lg border border-dashed border-[#3A332D]/70 bg-[#141210]/40 px-3 py-2.5"
                         >
-                          <span className="text-xs sm:text-sm text-slate-400">{line}</span>
+                          <span className="text-xs sm:text-sm text-[#8A7D70]">{line}</span>
                           <div className="flex gap-1">
-                            <span className="h-1.5 w-6 rounded-full bg-slate-700" />
-                            <span className="h-1.5 w-3 rounded-full bg-blue-500/60" />
+                            <span className="h-1.5 w-6 rounded-full bg-[#3A332D]" />
+                            <span className="h-1.5 w-3 rounded-full bg-[#06B6D4]/60" />
                           </div>
                         </div>
                       ))}
@@ -301,7 +302,7 @@ export default function TourPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-center text-xs text-slate-500">
+            <p className="mt-6 text-center text-xs text-[#7A6D60]">
               Visualização ilustrativa do painel. Os dados são gerados em tempo real
               conforme os agentes atendem seus clientes.
             </p>
@@ -358,13 +359,13 @@ export default function TourPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-6 sm:py-8 pb-20">
-        <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-slate-500 space-y-2">
+      <footer className="border-t border-[#2A2420] py-6 sm:py-8 pb-20">
+        <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-[#7A6D60] space-y-2">
           <p>&copy; 2026 Digitai — Evolute Digital. Todos os direitos reservados.</p>
           <p>
             <Link
               href="/privacidade"
-              className="text-slate-500 hover:text-slate-300 transition-colors"
+              className="text-[#7A6D60] hover:text-[#A89C8C] transition-colors"
             >
               Política de Privacidade
             </Link>

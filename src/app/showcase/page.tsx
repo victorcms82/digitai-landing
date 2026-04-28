@@ -363,7 +363,7 @@ function AnimatedStat({ value, label, suffix }: { value: string; label: string; 
       <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
         {count}{suffix}
       </div>
-      <div className="mt-2 text-sm sm:text-base text-slate-400">{label}</div>
+      <div className="mt-2 text-sm sm:text-base text-[#8A7D70]">{label}</div>
     </div>
   )
 }
@@ -481,7 +481,7 @@ export default function ShowcasePage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#141210] text-white overflow-x-hidden">
 
       {/* ════════ HERO ════════ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
@@ -504,13 +504,13 @@ export default function ShowcasePage() {
             priority
           />
 
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 mb-8">
-            <Sparkles className="h-4 w-4 text-blue-400" />
-            <span className="text-sm text-blue-300">Plataforma de Agentes IA Multifunção</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#06B6D4]/30 bg-[#06B6D4]/10 px-4 py-1.5 mb-8">
+            <Sparkles className="h-4 w-4 text-[#22D3EE]" />
+            <span className="text-sm text-[#67E8F9]">Plataforma de Agentes IA Multifunção</span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight mb-6">
-            <span className="bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-white to-[#8A7D70] bg-clip-text text-transparent">
               Seus funcionários de IA
             </span>
             <br />
@@ -519,7 +519,7 @@ export default function ShowcasePage() {
             </span>
           </h1>
 
-          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed">
+          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-[#8A7D70] mb-10 leading-relaxed">
             Agentes de inteligência artificial que atendem, agendam, coletam dados,
             geram documentos e fazem orçamentos. Tudo pelo WhatsApp.
           </p>
@@ -527,7 +527,7 @@ export default function ShowcasePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={scrollToChat}
-              className="group flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold transition-all hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
+              className="group flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold transition-all hover:bg-[#06B6D4] hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
             >
               <MessageSquare className="h-5 w-5" />
               Testar agora
@@ -535,7 +535,7 @@ export default function ShowcasePage() {
             </button>
             <a
               href="/tour"
-              className="group inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/50 px-6 py-3.5 text-sm font-medium text-slate-200 transition-all hover:border-slate-600 hover:bg-slate-900/80 active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#3A332D] bg-[#1F1B17]/50 px-6 py-3.5 text-sm font-medium text-[#E8DFD0] transition-all hover:border-[#5C5147] hover:bg-[#1A1715]/80 active:scale-95"
             >
               Ver tour do sistema
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -544,13 +544,13 @@ export default function ShowcasePage() {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <ChevronDown className="h-6 w-6 text-slate-600" />
+            <ChevronDown className="h-6 w-6 text-[#5C5147]" />
           </div>
         </div>
       </section>
 
       {/* ════════ STATS ════════ */}
-      <section className="py-12 sm:py-16 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-[#2A2420]/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {stats.map((stat) => (
@@ -571,7 +571,7 @@ export default function ShowcasePage() {
                 É funcionário.
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-slate-400 text-lg">
+            <p className="mx-auto max-w-2xl text-[#8A7D70] text-lg">
               Cada agente combina múltiplas funções em uma única conversa inteligente.
             </p>
           </div>
@@ -580,13 +580,13 @@ export default function ShowcasePage() {
             {capabilities.map((cap) => (
               <div
                 key={cap.title}
-                className="group relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-slate-700 hover:bg-slate-900/80"
+                className="group relative rounded-2xl border border-[#2A2420] bg-[#1F1B17]/50 p-6 transition-all hover:border-[#3A332D] hover:bg-[#1A1715]/80"
               >
                 <div className={`inline-flex rounded-xl bg-gradient-to-br ${cap.color} p-3 mb-4`}>
                   <cap.icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{cap.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{cap.description}</p>
+                <p className="text-[#8A7D70] leading-relaxed">{cap.description}</p>
               </div>
             ))}
           </div>
@@ -594,7 +594,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ HOW IT WORKS ════════ */}
-      <section className="py-12 sm:py-16 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-[#2A2420]/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -603,7 +603,7 @@ export default function ShowcasePage() {
                 começar.
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-slate-400 text-lg">
+            <p className="mx-auto max-w-2xl text-[#8A7D70] text-lg">
               Você cuida do seu negócio. A gente cuida da tecnologia.
             </p>
           </div>
@@ -621,7 +621,7 @@ export default function ShowcasePage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                    <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                    <p className="text-[#8A7D70] leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -641,7 +641,7 @@ export default function ShowcasePage() {
                 negócio.
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-slate-400 text-lg">
+            <p className="mx-auto max-w-2xl text-[#8A7D70] text-lg">
               A plataforma se adapta ao seu segmento. Toque num nicho e veja
               os funcionários de IA disponíveis.
             </p>
@@ -656,17 +656,17 @@ export default function ShowcasePage() {
                     onClick={() => setExpandedNiche(isOpen ? null : niche.name)}
                     className={`w-full rounded-xl border p-4 sm:p-5 text-center transition-all ${
                       isOpen
-                        ? "border-blue-500/50 bg-slate-900/80"
-                        : "border-slate-800 bg-slate-900/30 hover:border-slate-700 hover:bg-slate-900/60"
+                        ? "border-[#06B6D4]/50 bg-[#1A1715]/80"
+                        : "border-[#2A2420] bg-[#1A1715]/30 hover:border-[#3A332D] hover:bg-[#1A1715]/60"
                     }`}
                   >
-                    <niche.icon className={`h-8 w-8 mx-auto mb-3 transition-colors ${isOpen ? "text-blue-400" : "text-slate-400"}`} />
+                    <niche.icon className={`h-8 w-8 mx-auto mb-3 transition-colors ${isOpen ? "text-[#22D3EE]" : "text-[#8A7D70]"}`} />
                     <h3 className="font-semibold mb-1">{niche.name}</h3>
-                    <p className="text-xs text-slate-500">{niche.example}</p>
+                    <p className="text-xs text-[#7A6D60]">{niche.example}</p>
                     {isOpen ? (
-                      <ChevronUp className="h-4 w-4 mx-auto mt-2 text-blue-400" />
+                      <ChevronUp className="h-4 w-4 mx-auto mt-2 text-[#22D3EE]" />
                     ) : (
-                      <ChevronDown className="h-4 w-4 mx-auto mt-2 text-slate-600" />
+                      <ChevronDown className="h-4 w-4 mx-auto mt-2 text-[#5C5147]" />
                     )}
                   </button>
 
@@ -675,12 +675,12 @@ export default function ShowcasePage() {
                       {niche.employees.map((emp) => (
                         <div
                           key={emp.name}
-                          className="flex items-start gap-3 rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3"
+                          className="flex items-start gap-3 rounded-lg border border-[#2A2420] bg-[#1F1B17]/50 px-4 py-3"
                         >
-                          <Bot className="h-5 w-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                          <Bot className="h-5 w-5 text-[#22D3EE] flex-shrink-0 mt-0.5" />
                           <div>
                             <p className="font-medium text-sm text-white">{emp.name}</p>
-                            <p className="text-xs text-slate-400 leading-relaxed">{emp.desc}</p>
+                            <p className="text-xs text-[#8A7D70] leading-relaxed">{emp.desc}</p>
                           </div>
                         </div>
                       ))}
@@ -694,7 +694,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ CHANNELS ════════ */}
-      <section className="py-12 sm:py-16 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-[#2A2420]/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -704,7 +704,7 @@ export default function ShowcasePage() {
               </span>
               {" "}Uma conversa.
             </h2>
-            <p className="mx-auto max-w-2xl text-slate-400 text-lg">
+            <p className="mx-auto max-w-2xl text-[#8A7D70] text-lg">
               O mesmo agente responde em todos os canais, com o mesmo contexto e inteligência.
             </p>
           </div>
@@ -718,7 +718,7 @@ export default function ShowcasePage() {
             ].map((channel) => (
               <div
                 key={channel.name}
-                className="group relative rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:border-slate-700 hover:bg-slate-900/80 text-center"
+                className="group relative rounded-2xl border border-[#2A2420] bg-[#1F1B17]/50 p-6 transition-all hover:border-[#3A332D] hover:bg-[#1A1715]/80 text-center"
               >
                 {channel.badge && (
                   <span className={`absolute -top-2.5 right-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
@@ -731,13 +731,13 @@ export default function ShowcasePage() {
                   <channel.icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{channel.name}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{channel.desc}</p>
+                <p className="text-sm text-[#8A7D70] leading-relaxed">{channel.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-slate-500 text-sm">
+            <p className="text-[#7A6D60] text-sm">
               O cliente pode começar pelo WhatsApp e continuar por email — o agente mantém todo o contexto.
             </p>
           </div>
@@ -745,7 +745,7 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ DIFFERENTIALS ════════ */}
-      <section className="py-12 sm:py-16 border-t border-slate-800/50">
+      <section className="py-12 sm:py-16 border-t border-[#2A2420]/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -766,11 +766,11 @@ export default function ShowcasePage() {
                 { icon: Users, title: "Equipe completa", desc: "Tenha funcionários diferentes para cada setor do seu negócio. RH, jurídico, atendimento, comercial — cada um com suas regras e personalidade." },
                 { icon: Building2, title: "Escalável", desc: "De 1 a 100 agentes. Infra preparada para crescer junto com o seu negócio." },
               ].map((diff) => (
-                <div key={diff.title} className="flex gap-4 p-4 rounded-xl hover:bg-slate-900/50 transition-colors">
-                  <diff.icon className="h-6 w-6 text-blue-400 flex-shrink-0 mt-0.5" />
+                <div key={diff.title} className="flex gap-4 p-4 rounded-xl hover:bg-[#1F1B17]/50 transition-colors">
+                  <diff.icon className="h-6 w-6 text-[#22D3EE] flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-semibold mb-1">{diff.title}</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed">{diff.desc}</p>
+                    <p className="text-sm text-[#8A7D70] leading-relaxed">{diff.desc}</p>
                   </div>
                 </div>
               ))}
@@ -790,7 +790,7 @@ export default function ShowcasePage() {
                 agora
               </span>
             </h2>
-            <p className="mx-auto max-w-xl text-slate-400 text-lg">
+            <p className="mx-auto max-w-xl text-[#8A7D70] text-lg">
               Dois canais diferentes, mesma inteligência. Converse por chat ou envie um email.
             </p>
           </div>
@@ -802,7 +802,7 @@ export default function ShowcasePage() {
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                 demoMode === "chat"
                   ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
-                  : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+                  : "border border-[#3A332D] bg-[#1F1B17]/50 text-[#8A7D70] hover:text-white hover:border-[#5C5147]"
               }`}
             >
               <MessageSquare className="h-4 w-4" />
@@ -813,7 +813,7 @@ export default function ShowcasePage() {
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                 demoMode === "email"
                   ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/20"
-                  : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+                  : "border border-[#3A332D] bg-[#1F1B17]/50 text-[#8A7D70] hover:text-white hover:border-[#5C5147]"
               }`}
             >
               <Mail className="h-4 w-4" />
@@ -834,7 +834,7 @@ export default function ShowcasePage() {
                     className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                       activeAgent.id === agent.id
                         ? `bg-gradient-to-r ${agent.color} text-white shadow-lg`
-                        : "border border-slate-700 bg-slate-900/50 text-slate-400 hover:text-white hover:border-slate-600"
+                        : "border border-[#3A332D] bg-[#1F1B17]/50 text-[#8A7D70] hover:text-white hover:border-[#5C5147]"
                     }`}
                   >
                     <Bot className="h-4 w-4" />
@@ -844,7 +844,7 @@ export default function ShowcasePage() {
               </div>
 
               {/* Fictional companies disclaimer */}
-              <p className="text-center text-xs text-slate-500 mb-4 max-w-lg mx-auto">
+              <p className="text-center text-xs text-[#7A6D60] mb-4 max-w-lg mx-auto">
                 Bella Estética e Castro & Associados são empresas fictícias criadas para demonstração.
                 A IA que responde é a mesma tecnologia usada em produção.
               </p>
@@ -863,9 +863,9 @@ export default function ShowcasePage() {
                 </a>
               </div>
 
-              <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
+              <div className="mx-auto max-w-2xl rounded-2xl border border-[#2A2420] bg-[#1A1715]/80 backdrop-blur overflow-hidden shadow-2xl shadow-blue-500/5">
                 {/* Chat Header */}
-                <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
+                <div className="flex items-center gap-3 border-b border-[#2A2420] bg-[#1A1715] px-5 py-4">
                   <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${activeAgent.color}`}>
                     <Bot className="h-5 w-5 text-white" />
                   </div>
@@ -873,7 +873,7 @@ export default function ShowcasePage() {
                     <h3 className="font-semibold text-white">{activeAgent.name} — {activeAgent.niche}</h3>
                     <div className="flex items-center gap-1.5">
                       <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-xs text-slate-400">Online agora</span>
+                      <span className="text-xs text-[#8A7D70]">Online agora</span>
                     </div>
                   </div>
                 </div>
@@ -890,12 +890,12 @@ export default function ShowcasePage() {
                       <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                         msg.role === "user"
                           ? "bg-blue-600 text-white"
-                          : "bg-slate-800 text-slate-100"
+                          : "bg-[#2A2420] text-[#F5E8D9]"
                       }`}>
                         {msg.content}
                       </div>
                       {msg.role === "user" && (
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-700">
+                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#3A332D]">
                           <User className="h-4 w-4 text-white" />
                         </div>
                       )}
@@ -906,11 +906,11 @@ export default function ShowcasePage() {
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
                         <Bot className="h-4 w-4 text-white" />
                       </div>
-                      <div className="rounded-2xl bg-slate-800 px-4 py-3">
+                      <div className="rounded-2xl bg-[#2A2420] px-4 py-3">
                         <div className="flex gap-1">
-                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" />
-                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-                          <span className="w-2 h-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                          <span className="w-2 h-2 bg-[#5C5147] rounded-full animate-bounce" />
+                          <span className="w-2 h-2 bg-[#5C5147] rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+                          <span className="w-2 h-2 bg-[#5C5147] rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
                         </div>
                       </div>
                     </div>
@@ -920,14 +920,14 @@ export default function ShowcasePage() {
 
                 {/* Suggestions */}
                 {messages.length <= 2 && !chatOpen && (
-                  <div className="border-t border-slate-800 px-4 py-3 bg-slate-900/50">
-                    <p className="text-xs text-slate-500 mb-2">Sugestões:</p>
+                  <div className="border-t border-[#2A2420] px-4 py-3 bg-[#1F1B17]/50">
+                    <p className="text-xs text-[#7A6D60] mb-2">Sugestões:</p>
                     <div className="flex flex-wrap gap-2">
                       {(suggestionsMap[activeAgent.id] || []).map((s) => (
                         <button
                           key={s}
                           onClick={() => handleSendMessage(s)}
-                          className="rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1.5 text-xs text-slate-300 transition-all hover:border-blue-500/50 hover:text-white hover:bg-slate-800"
+                          className="rounded-full border border-[#3A332D] bg-[#2A2420]/50 px-3 py-1.5 text-xs text-[#A89C8C] transition-all hover:border-[#06B6D4]/50 hover:text-white hover:bg-[#2A2420]"
                         >
                           {s}
                         </button>
@@ -937,7 +937,7 @@ export default function ShowcasePage() {
                 )}
 
                 {/* Input */}
-                <div className="border-t border-slate-800 bg-slate-900 p-4">
+                <div className="border-t border-[#2A2420] bg-[#1A1715] p-4">
                   <form
                     onSubmit={(e) => { e.preventDefault(); handleSendMessage() }}
                     className="flex gap-2"
@@ -946,13 +946,13 @@ export default function ShowcasePage() {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Digite sua mensagem..."
-                      className="flex-1 h-11 rounded-xl border border-slate-700 bg-slate-800 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+                      className="flex-1 h-11 rounded-xl border border-[#3A332D] bg-[#2A2420] px-4 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-[#06B6D4] transition-colors"
                       disabled={isLoading}
                     />
                     <button
                       type="submit"
                       disabled={isLoading || !input.trim()}
-                      className="h-11 w-11 flex items-center justify-center rounded-xl bg-blue-600 text-white transition-all hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 active:scale-95"
+                      className="h-11 w-11 flex items-center justify-center rounded-xl bg-blue-600 text-white transition-all hover:bg-[#06B6D4] disabled:opacity-40 disabled:hover:bg-blue-600 active:scale-95"
                     >
                       <Send className="h-5 w-5" />
                     </button>
@@ -964,15 +964,15 @@ export default function ShowcasePage() {
 
           {/* ─── EMAIL DEMO ─── */}
           {demoMode === "email" && (
-            <div className="mx-auto max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/80 backdrop-blur overflow-hidden shadow-2xl shadow-orange-500/5">
+            <div className="mx-auto max-w-2xl rounded-2xl border border-[#2A2420] bg-[#1A1715]/80 backdrop-blur overflow-hidden shadow-2xl shadow-orange-500/5">
               {/* Email Header */}
-              <div className="flex items-center gap-3 border-b border-slate-800 bg-slate-900 px-5 py-4">
+              <div className="flex items-center gap-3 border-b border-[#2A2420] bg-[#1A1715] px-5 py-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500">
                   <Mail className="h-5 w-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Demo por Email</h3>
-                  <p className="text-xs text-slate-400">Envie um email para a {activeAgent.name} e veja a resposta do agente real</p>
+                  <p className="text-xs text-[#8A7D70]">Envie um email para a {activeAgent.name} e veja a resposta do agente real</p>
                 </div>
               </div>
 
@@ -981,54 +981,54 @@ export default function ShowcasePage() {
                 <form onSubmit={handleEmailSubmit} className="p-5 space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs text-slate-400 mb-1.5">Seu nome</label>
+                      <label className="block text-xs text-[#8A7D70] mb-1.5">Seu nome</label>
                       <input
                         type="text"
                         value={emailForm.name}
                         onChange={(e) => setEmailForm(prev => ({ ...prev, name: e.target.value }))}
                         placeholder={activeAgent.emailPlaceholders.name}
-                        className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                        className="w-full h-10 rounded-lg border border-[#3A332D] bg-[#2A2420] px-3 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-orange-500 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-slate-400 mb-1.5">Seu email <span className="text-orange-400">*</span></label>
+                      <label className="block text-xs text-[#8A7D70] mb-1.5">Seu email <span className="text-orange-400">*</span></label>
                       <input
                         type="email"
                         required
                         value={emailForm.email}
                         onChange={(e) => setEmailForm(prev => ({ ...prev, email: e.target.value }))}
                         placeholder={activeAgent.emailPlaceholders.email}
-                        className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                        className="w-full h-10 rounded-lg border border-[#3A332D] bg-[#2A2420] px-3 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-orange-500 transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1.5">Assunto</label>
+                    <label className="block text-xs text-[#8A7D70] mb-1.5">Assunto</label>
                     <input
                       type="text"
                       value={emailForm.subject}
                       onChange={(e) => setEmailForm(prev => ({ ...prev, subject: e.target.value }))}
                       placeholder={activeAgent.emailPlaceholders.subject}
-                      className="w-full h-10 rounded-lg border border-slate-700 bg-slate-800 px-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors"
+                      className="w-full h-10 rounded-lg border border-[#3A332D] bg-[#2A2420] px-3 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-orange-500 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1.5">Mensagem <span className="text-orange-400">*</span></label>
+                    <label className="block text-xs text-[#8A7D70] mb-1.5">Mensagem <span className="text-orange-400">*</span></label>
                     <textarea
                       required
                       rows={4}
                       value={emailForm.body}
                       onChange={(e) => setEmailForm(prev => ({ ...prev, body: e.target.value }))}
                       placeholder={activeAgent.emailPlaceholders.body}
-                      className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2.5 text-sm text-white placeholder:text-slate-500 outline-none focus:border-orange-500 transition-colors resize-none"
+                      className="w-full rounded-lg border border-[#3A332D] bg-[#2A2420] px-3 py-2.5 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-orange-500 transition-colors resize-none"
                     />
                   </div>
 
                   {/* Attachment field */}
                   <div>
-                    <label className="block text-xs text-slate-400 mb-1.5">Anexo</label>
+                    <label className="block text-xs text-[#8A7D70] mb-1.5">Anexo</label>
                     <div className="relative">
                       <input
                         ref={fileInputRef}
@@ -1038,14 +1038,14 @@ export default function ShowcasePage() {
                         accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.csv,.txt"
                       />
                       {emailAttachment ? (
-                        <div className="flex items-center gap-2 h-10 rounded-lg border border-slate-700 bg-slate-800 px-3">
+                        <div className="flex items-center gap-2 h-10 rounded-lg border border-[#3A332D] bg-[#2A2420] px-3">
                           <Paperclip className="h-4 w-4 text-orange-400 shrink-0" />
                           <span className="text-sm text-white truncate flex-1">{emailAttachment.name}</span>
-                          <span className="text-xs text-slate-500 shrink-0">{(emailAttachment.size / 1024).toFixed(0)} KB</span>
+                          <span className="text-xs text-[#7A6D60] shrink-0">{(emailAttachment.size / 1024).toFixed(0)} KB</span>
                           <button
                             type="button"
                             onClick={() => { setEmailAttachment(null); if (fileInputRef.current) fileInputRef.current.value = "" }}
-                            className="text-slate-500 hover:text-white transition-colors"
+                            className="text-[#7A6D60] hover:text-white transition-colors"
                           >
                             <X className="h-3.5 w-3.5" />
                           </button>
@@ -1054,7 +1054,7 @@ export default function ShowcasePage() {
                         <button
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
-                          className="flex items-center gap-2 h-10 w-full rounded-lg border border-dashed border-slate-700 bg-slate-800/50 px-3 text-sm text-slate-500 hover:border-orange-500/50 hover:text-slate-400 transition-colors"
+                          className="flex items-center gap-2 h-10 w-full rounded-lg border border-dashed border-[#3A332D] bg-[#2A2420]/50 px-3 text-sm text-[#7A6D60] hover:border-orange-500/50 hover:text-[#8A7D70] transition-colors"
                         >
                           <Paperclip className="h-4 w-4" />
                           Anexar arquivo (opcional)
@@ -1064,7 +1064,7 @@ export default function ShowcasePage() {
                   </div>
 
                   <div className="flex items-center justify-between pt-1">
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-[#7A6D60]">
                       Para: <span className="text-orange-400">{activeAgent.emailAddress}</span>
                     </p>
                     <button
@@ -1081,41 +1081,41 @@ export default function ShowcasePage() {
                 /* Email Sent + Response */
                 <div className="p-5 space-y-4">
                   {/* Sent email preview */}
-                  <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+                  <div className="rounded-xl border border-[#3A332D] bg-[#2A2420]/50 p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span className="text-sm font-medium text-green-400">Email enviado</span>
                     </div>
-                    <div className="text-xs text-slate-400 space-y-1">
-                      <p><span className="text-slate-500">De:</span> {emailForm.name || emailForm.email} &lt;{emailForm.email}&gt;</p>
-                      <p><span className="text-slate-500">Para:</span> {activeAgent.emailAddress}</p>
-                      {emailForm.subject && <p><span className="text-slate-500">Assunto:</span> {emailForm.subject}</p>}
+                    <div className="text-xs text-[#8A7D70] space-y-1">
+                      <p><span className="text-[#7A6D60]">De:</span> {emailForm.name || emailForm.email} &lt;{emailForm.email}&gt;</p>
+                      <p><span className="text-[#7A6D60]">Para:</span> {activeAgent.emailAddress}</p>
+                      {emailForm.subject && <p><span className="text-[#7A6D60]">Assunto:</span> {emailForm.subject}</p>}
                       {emailAttachment && (
                         <p className="flex items-center gap-1">
                           <Paperclip className="h-3 w-3 text-orange-400" />
-                          <span className="text-slate-500">Anexo:</span> {emailAttachment.name}
+                          <span className="text-[#7A6D60]">Anexo:</span> {emailAttachment.name}
                         </p>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-slate-300 whitespace-pre-wrap">{emailForm.body}</p>
+                    <p className="mt-2 text-sm text-[#A89C8C] whitespace-pre-wrap">{emailForm.body}</p>
                   </div>
 
                   {/* Agent response */}
                   {emailSending ? (
                     <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-5 text-center">
                       <Loader2 className="h-6 w-6 text-orange-400 animate-spin mx-auto mb-3" />
-                      <p className="text-sm text-slate-300 font-medium">O agente está processando seu email...</p>
-                      <p className="text-xs text-slate-500 mt-1">Isso usa o pipeline real — pode levar até 60 segundos</p>
+                      <p className="text-sm text-[#A89C8C] font-medium">O agente está processando seu email...</p>
+                      <p className="text-xs text-[#7A6D60] mt-1">Isso usa o pipeline real — pode levar até 60 segundos</p>
                     </div>
                   ) : emailResponse && (
-                    <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
+                    <div className="rounded-xl border border-[#3A332D] bg-[#2A2420]/50 p-4">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-amber-500">
                           <Bot className="h-3.5 w-3.5 text-white" />
                         </div>
                         <span className="text-sm font-medium text-white">{activeAgent.name} respondeu</span>
                       </div>
-                      <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{emailResponse}</p>
+                      <p className="text-sm text-[#A89C8C] leading-relaxed whitespace-pre-wrap">{emailResponse}</p>
                     </div>
                   )}
 
@@ -1124,7 +1124,7 @@ export default function ShowcasePage() {
                     <div className="text-center pt-2">
                       <button
                         onClick={resetEmailDemo}
-                        className="text-sm text-slate-400 hover:text-white transition-colors underline underline-offset-4"
+                        className="text-sm text-[#8A7D70] hover:text-white transition-colors underline underline-offset-4"
                       >
                         Enviar outro email
                       </button>
@@ -1137,7 +1137,7 @@ export default function ShowcasePage() {
 
           {/* CTA below demo */}
           <div className="mt-8 text-center">
-            <p className="text-slate-500 text-sm">
+            <p className="text-[#7A6D60] text-sm">
               {demoMode === "chat"
                 ? "Estes são agentes de demonstração. Os agentes reais funcionam no WhatsApp, Instagram, webchat e email — com os dados reais do seu negócio."
                 : "Este email é processado pelo pipeline real da Digitai — o mesmo que atende clientes em produção."
@@ -1159,7 +1159,7 @@ export default function ShowcasePage() {
               </span>
               {" "}para o seu negócio?
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-[#8A7D70] text-lg">
               Preencha seus dados e fale direto com a gente pelo WhatsApp.
             </p>
           </div>
@@ -1182,7 +1182,7 @@ export default function ShowcasePage() {
                 type="text"
                 required
                 placeholder="Seu nome"
-                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+                className="w-full h-12 rounded-xl border border-[#3A332D] bg-[#1A1715]/80 px-4 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-[#06B6D4] transition-colors"
               />
             </div>
             <div>
@@ -1191,7 +1191,7 @@ export default function ShowcasePage() {
                 type="text"
                 required
                 placeholder="Nome da empresa"
-                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 transition-colors"
+                className="w-full h-12 rounded-xl border border-[#3A332D] bg-[#1A1715]/80 px-4 text-sm text-white placeholder:text-[#7A6D60] outline-none focus:border-[#06B6D4] transition-colors"
               />
             </div>
             <div>
@@ -1199,11 +1199,11 @@ export default function ShowcasePage() {
                 name="lead_nicho"
                 required
                 defaultValue=""
-                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-900/80 px-4 text-sm text-white outline-none focus:border-blue-500 transition-colors appearance-none"
+                className="w-full h-12 rounded-xl border border-[#3A332D] bg-[#1A1715]/80 px-4 text-sm text-white outline-none focus:border-[#06B6D4] transition-colors appearance-none"
               >
-                <option value="" disabled className="text-slate-500">Segmento do negócio</option>
+                <option value="" disabled className="text-[#7A6D60]">Segmento do negócio</option>
                 {niches.map((n) => (
-                  <option key={n.name} value={n.name} className="bg-slate-900">{n.name}</option>
+                  <option key={n.name} value={n.name} className="bg-[#1A1715]">{n.name}</option>
                 ))}
               </select>
             </div>
@@ -1215,7 +1215,7 @@ export default function ShowcasePage() {
               Falar pelo WhatsApp
               <ExternalLink className="h-3.5 w-3.5 opacity-60" />
             </button>
-            <p className="text-center text-xs text-slate-600">
+            <p className="text-center text-xs text-[#5C5147]">
               Sem compromisso. Respondemos em até 24h.
             </p>
           </form>
@@ -1223,15 +1223,15 @@ export default function ShowcasePage() {
       </section>
 
       {/* ════════ FOOTER ════════ */}
-      <footer className="border-t border-slate-800/50 py-12">
+      <footer className="border-t border-[#2A2420]/50 py-12">
         <div className="container mx-auto px-4 text-center">
           <div className="text-2xl font-bold mb-4">
-            Digit<span className="text-blue-500">AI</span>
+            Digit<span className="text-[#06B6D4]">AI</span>
           </div>
-          <p className="text-slate-500 text-sm mb-2">
+          <p className="text-[#7A6D60] text-sm mb-2">
             Plataforma de agentes IA multifunção
           </p>
-          <p className="text-slate-600 text-xs">
+          <p className="text-[#5C5147] text-xs">
             Evolute Digital &copy; {new Date().getFullYear()}
           </p>
         </div>

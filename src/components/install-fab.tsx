@@ -68,15 +68,15 @@ export function InstallFab() {
         />
 
         {/* Tooltip */}
-        <div className="fixed bottom-20 right-4 z-50 w-72 rounded-lg bg-slate-800 border border-slate-700 p-4 shadow-xl animate-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed bottom-20 right-4 z-50 w-72 rounded-lg bg-[#2A2420] border border-[#3A332D] p-4 shadow-xl animate-in slide-in-from-bottom-4 duration-200">
           <button
             onClick={() => setShowTooltip(false)}
-            className="absolute top-2 right-2 p-1 text-slate-400 hover:text-white"
+            className="absolute top-2 right-2 p-1 text-[#8A7D70] hover:text-white"
           >
             <X className="h-4 w-4" />
           </button>
           <p className="font-medium text-white text-sm mb-3">Como instalar no iPhone:</p>
-          <ol className="text-xs text-slate-300 space-y-2">
+          <ol className="text-xs text-[#A89C8C] space-y-2">
             <li className="flex items-start gap-2">
               <span className="font-bold text-emerald-400">1.</span>
               <span>Toque em <Share className="inline h-3.5 w-3.5 mx-0.5" /> <strong>Compartilhar</strong></span>
