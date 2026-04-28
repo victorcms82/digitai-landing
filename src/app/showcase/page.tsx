@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
+import { DigitaiBrandLogo } from "@/components/ui/digitai-brand-logo"
 import {
   MessageSquare, Bot, Zap, Brain, BarChart3, Shield,
   Users, Building2, Stethoscope, Wrench, Scale, ShoppingCart,
@@ -749,11 +750,9 @@ export default function ShowcasePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-                Por que{" "}
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  Digit<span className="text-cyan-400">AI</span>
-                </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 flex items-center justify-center gap-3 flex-wrap">
+                <span>Por que</span>
+                <DigitaiBrandLogo size="lg" theme="dark" />
               </h2>
             </div>
 
@@ -1225,8 +1224,8 @@ export default function ShowcasePage() {
       {/* ════════ FOOTER ════════ */}
       <footer className="border-t border-[#2A2420]/50 py-12">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-2xl font-bold mb-4">
-            Digit<span className="text-[#06B6D4]">AI</span>
+          <div className="mb-4 flex items-center justify-center">
+            <DigitaiBrandLogo size="md" theme="dark" />
           </div>
           <p className="text-[#7A6D60] text-sm mb-2">
             Plataforma de agentes IA multifunção
