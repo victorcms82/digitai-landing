@@ -8,9 +8,9 @@ export const DIGITAI_LOGO_VIEWBOX = "0 0 68 32";
 export const DIGITAI_LOGO_TEXT_Y = 24;
 export const DIGITAI_LOGO_FONT_SIZE = 24;
 export const DIGITAI_LOGO_LETTER_SPACING = "-0.05em";
-export const DIGITAI_LOGO_DOT_CX = 64.2;
-export const DIGITAI_LOGO_DOT_CY = 8.28;
-export const DIGITAI_LOGO_DOT_R = 1.6;
+export const DIGITAI_LOGO_DOT_CX = 63.7;   // V5 DSG-10b: -0.5 alinha haste
+export const DIGITAI_LOGO_DOT_CY = 7.3;    // V5 DSG-10b: -0.98 sobe altura natural
+export const DIGITAI_LOGO_DOT_R = 1.15;    // V5 DSG-10b: -28% match pingo natural
 
 // ─── Cores por tema ───
 export const DIGITAI_LOGO_TEXT_DARK = "#F5E8D9";   // cream warm

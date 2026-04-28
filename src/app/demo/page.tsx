@@ -179,7 +179,7 @@ export default function DemoPage() {
         <main className="container mx-auto px-4 py-4 sm:py-8 pb-8">
           <div className="mx-auto max-w-xl">
             <div className="mb-6 sm:mb-8 text-center">
-              <div className="mx-auto mb-3 sm:mb-4 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-blue-600">
+              <div className="mx-auto mb-3 sm:mb-4 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-[#06B6D4]">
                 <Sparkles className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
               </div>
               <h1 className="mb-2 text-2xl sm:text-3xl font-bold text-white">Crie seu Agente de IA</h1>
@@ -271,7 +271,7 @@ export default function DemoPage() {
                 <Button
                   onClick={handleStartChat}
                   disabled={!businessInfo.name || !businessInfo.services}
-                  className="mt-2 w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 h-12 text-base"
+                  className="mt-2 w-full bg-[#06B6D4] hover:bg-[#22D3EE] active:bg-[#0891B2] h-12 text-base"
                   size="lg"
                 >
                   <MessageSquare className="mr-2 h-5 w-5" />
@@ -319,14 +319,14 @@ export default function DemoPage() {
                 className={`flex gap-2 sm:gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 {message.role === "assistant" && (
-                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600">
+                  <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#06B6D4]">
                     <Bot className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                   </div>
                 )}
                 <div
                   className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base whitespace-pre-wrap [&_strong]:font-semibold ${
                     message.role === "user"
-                      ? "bg-blue-600 text-white"
+                      ? "bg-[#06B6D4] text-white"
                       : "bg-[#2A2420] text-[#F5E8D9]"
                   }`}
                   dangerouslySetInnerHTML={{
@@ -346,7 +346,7 @@ export default function DemoPage() {
             ))}
             {isLoading && (
               <div className="flex gap-2 sm:gap-3">
-                <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600">
+                <div className="flex h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#06B6D4]">
                   <Bot className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
                 </div>
                 <div className="rounded-2xl bg-[#2A2420] px-4 py-3">
@@ -400,7 +400,7 @@ export default function DemoPage() {
             <Button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 h-11 sm:h-10 w-11 sm:w-10 p-0"
+              className="bg-[#06B6D4] hover:bg-[#22D3EE] active:bg-[#0891B2] h-11 sm:h-10 w-11 sm:w-10 p-0"
             >
               <Send className="h-5 w-5" />
             </Button>

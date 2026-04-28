@@ -101,7 +101,7 @@ const capabilities = [
     icon: MessageSquare,
     title: "Atendimento Inteligente",
     description: "Responde dúvidas, qualifica leads e encaminha com contexto. Entende áudio, imagem e PDF.",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-[#06B6D4] to-[#22D3EE]",
   },
   {
     icon: Calendar,
@@ -488,7 +488,7 @@ export default function ShowcasePage() {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] animate-pulse" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#06B6D4]/20 rounded-full blur-[128px] animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/15 rounded-full blur-[128px] animate-pulse" style={{ animationDelay: "1s" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[160px]" />
         </div>
@@ -528,7 +528,7 @@ export default function ShowcasePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={scrollToChat}
-              className="group flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold transition-all hover:bg-[#06B6D4] hover:shadow-lg hover:shadow-blue-500/25 active:scale-95"
+              className="group flex items-center gap-2 rounded-full bg-[#06B6D4] px-8 py-4 text-lg font-semibold transition-all hover:bg-[#22D3EE] hover:shadow-lg hover:shadow-[#06B6D4]/25 active:scale-95"
             >
               <MessageSquare className="h-5 w-5" />
               Testar agora
@@ -568,7 +568,7 @@ export default function ShowcasePage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Não é chatbot.{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#06B6D4] to-[#22D3EE] bg-clip-text text-transparent">
                 É funcionário.
               </span>
             </h2>
@@ -600,7 +600,7 @@ export default function ShowcasePage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Simples de{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#06B6D4] to-[#22D3EE] bg-clip-text text-transparent">
                 começar.
               </span>
             </h2>
@@ -713,7 +713,7 @@ export default function ShowcasePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
               { icon: Phone, name: "WhatsApp", desc: "API oficial da Meta (WABA). Selo verde, criptografia, sem risco de banimento.", color: "from-green-500 to-emerald-500", badge: "Principal" },
-              { icon: Globe, name: "Webchat", desc: "Widget no seu site. Instalação com 1 linha de código. Funciona em qualquer página.", color: "from-blue-500 to-cyan-500", badge: null },
+              { icon: Globe, name: "Webchat", desc: "Widget no seu site. Instalação com 1 linha de código. Funciona em qualquer página.", color: "from-[#06B6D4] to-[#22D3EE]", badge: null },
               { icon: Instagram, name: "Instagram", desc: "DMs do Instagram processadas pelo agente. Mesma inteligência, canal diferente.", color: "from-pink-500 to-purple-500", badge: null },
               { icon: Mail, name: "Email", desc: "Recebe e responde emails automaticamente. Threading completo, como uma pessoa real.", color: "from-orange-500 to-amber-500", badge: "Novo" },
             ].map((channel) => (
@@ -785,7 +785,7 @@ export default function ShowcasePage() {
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Teste{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#06B6D4] to-[#22D3EE] bg-clip-text text-transparent">
                 agora
               </span>
             </h2>
@@ -800,7 +800,7 @@ export default function ShowcasePage() {
               onClick={() => setDemoMode("chat")}
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                 demoMode === "chat"
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
+                  ? "bg-[#06B6D4] text-white shadow-lg shadow-[#06B6D4]/20"
                   : "border border-[#3A332D] bg-[#1F1B17]/50 text-[#8A7D70] hover:text-white hover:border-[#5C5147]"
               }`}
             >
@@ -888,7 +888,7 @@ export default function ShowcasePage() {
                       )}
                       <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                         msg.role === "user"
-                          ? "bg-blue-600 text-white"
+                          ? "bg-[#06B6D4] text-white"
                           : "bg-[#2A2420] text-[#F5E8D9]"
                       }`}>
                         {msg.content}
@@ -902,7 +902,7 @@ export default function ShowcasePage() {
                   ))}
                   {isLoading && (
                     <div className="flex gap-2.5">
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#06B6D4] to-[#22D3EE]">
                         <Bot className="h-4 w-4 text-white" />
                       </div>
                       <div className="rounded-2xl bg-[#2A2420] px-4 py-3">
@@ -951,7 +951,7 @@ export default function ShowcasePage() {
                     <button
                       type="submit"
                       disabled={isLoading || !input.trim()}
-                      className="h-11 w-11 flex items-center justify-center rounded-xl bg-blue-600 text-white transition-all hover:bg-[#06B6D4] disabled:opacity-40 disabled:hover:bg-blue-600 active:scale-95"
+                      className="h-11 w-11 flex items-center justify-center rounded-xl bg-[#06B6D4] text-white transition-all hover:bg-[#22D3EE] disabled:opacity-40 disabled:hover:bg-[#06B6D4] active:scale-95"
                     >
                       <Send className="h-5 w-5" />
                     </button>
@@ -1153,7 +1153,7 @@ export default function ShowcasePage() {
           <div className="max-w-xl mx-auto text-center mb-10">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Quer um{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#06B6D4] to-[#22D3EE] bg-clip-text text-transparent">
                 funcionário de IA
               </span>
               {" "}para o seu negócio?

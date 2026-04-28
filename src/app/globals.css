@@ -19,7 +19,7 @@
     --secondary: 33 43% 89%;
     --secondary-foreground: 30 22% 27%;
     --muted: 33 43% 89%;
-    --muted-foreground: 30 12% 49%;
+    --muted-foreground: 30 16% 36%;                       /* #6B5E50 — V2 AA Body 5.5:1 */
     --accent: 33 43% 89%;
     --accent-foreground: 30 22% 27%;
     --destructive: 0 84% 60%;
@@ -34,9 +34,9 @@
     /* Dark mode — warm dark (Digitai SPEC v1.0 §2.1) */
     --background: 30 11% 7%;
     --foreground: 32 67% 91%;
-    --card: 30 15% 11%;
+    --card: 30 6% 11%;                                    /* #1F1D1B warm graphite V4 */
     --card-foreground: 32 67% 91%;
-    --popover: 24 11% 9%;
+    --popover: 24 6% 6%;                                  /* #100E0C sidebar cratera V3 */
     --popover-foreground: 32 67% 91%;
     --primary: 189 95% 43%;
     --primary-foreground: 0 0% 4%;
@@ -48,8 +48,8 @@
     --accent-foreground: 32 67% 91%;
     --destructive: 0 68% 82%;
     --destructive-foreground: 0 0% 4%;
-    --border: 24 14% 15%;
-    --input: 24 14% 15%;
+    --border: 24 7% 16%;                                  /* #2A2724 warm graphite V4 */
+    --input: 30 7% 8%;                                    /* #161412 warm graphite V4 */
     --ring: 189 95% 43%;
   }
 }

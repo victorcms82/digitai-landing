@@ -59,7 +59,7 @@ const channels = [
     icon: Globe,
     label: "Chat no site",
     desc: "Um balão que aparece no canto da sua página. Atende quem entrou curioso.",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-[#06B6D4] to-[#22D3EE]",
   },
   {
     icon: Mail,
@@ -130,7 +130,7 @@ export default function TourPage() {
             </div>
             <h1 className="mb-5 sm:mb-6 text-3xl sm:text-5xl md:text-6xl font-bold leading-tight text-white">
               Funcionários de IA{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#06B6D4] to-[#22D3EE] bg-clip-text text-transparent">
                 pro seu negócio.
               </span>
             </h1>

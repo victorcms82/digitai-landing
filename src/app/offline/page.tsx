@@ -25,7 +25,7 @@ export default function OfflinePage() {
 
         <Button
           onClick={handleRetry}
-          className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800"
+          className="bg-[#06B6D4] hover:bg-[#22D3EE] active:bg-[#0891B2]"
         >
           <RefreshCw className="mr-2 h-4 w-4" />
           Tentar novamente
