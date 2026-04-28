@@ -86,7 +86,7 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('push', (event) => {
   const data = event.data?.json() ?? {};
 
-  const title = data.title || 'DigitAI';
+  const title = data.title || 'Digitai';
   const options = {
     body: data.body || 'Você tem uma nova mensagem!',
     icon: '/icons/icon-192.png',

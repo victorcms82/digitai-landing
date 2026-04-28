@@ -29,7 +29,7 @@ digitai-landing/
 ├── public/
 │   ├── manifest.json         # PWA manifest
 │   ├── sw.js                 # Service Worker
-│   └── icons/                # Ícones PWA (verde #059669)
+│   └── icons/                # Ícones PWA — warm dark (#141210), monograma Digitai v2-mid (SPEC v1.1 §2.4)
 └── scripts/
     └── generate-icons.js     # Gerador de ícones
 ```
@@ -45,7 +45,7 @@ npm run lint     # ESLint
 
 ## PWA
 
-- **Cor tema:** Verde (#059669)
+- **Cor tema:** Warm dark (#141210) — paleta SPEC v1.1 DSG-7
 - **Ícones:** Gerados via `scripts/generate-icons.js`
 - **Offline:** Service Worker com cache de assets
 - **Instalável:** Banner + InstallFab component

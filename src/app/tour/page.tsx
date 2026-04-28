@@ -24,12 +24,12 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Tour do Sistema | DigitAI",
+  title: "Tour do Sistema | Digitai",
   description:
     "Conheça o Digitai por dentro: funcionários de IA que atendem pelo WhatsApp, site, email e Instagram — com um painel onde o dono acompanha tudo em tempo real.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Tour do Sistema | DigitAI",
+    title: "Tour do Sistema | Digitai",
     description:
       "Funcionários de IA pro seu negócio — atendem, agendam, geram documentos, fazem orçamentos. Tudo num lugar só.",
     type: "website",
@@ -360,7 +360,7 @@ export default function TourPage() {
       {/* Footer */}
       <footer className="border-t border-slate-800 py-6 sm:py-8 pb-20">
         <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-slate-500 space-y-2">
-          <p>&copy; 2026 DigitAI — Evolute Digital. Todos os direitos reservados.</p>
+          <p>&copy; 2026 Digitai — Evolute Digital. Todos os direitos reservados.</p>
           <p>
             <Link
               href="/privacidade"

@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-// SVG do icone DigitAI com cor verde/emerald
+// SVG do ícone Digitai com cor cyan #06B6D4
 const createIconSVG = (size) => `
 <svg width="${size}" height="${size}" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>

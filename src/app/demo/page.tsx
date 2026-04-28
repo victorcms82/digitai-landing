@@ -411,7 +411,7 @@ export default function DemoPage() {
       {/* CTA Banner - Clickable */}
       <div className="border-t border-slate-800 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 p-3 sm:p-4">
         <a
-          href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Testei%20o%20demo%20do%20DigitAI%20e%20quero%20saber%20mais!"
+          href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Testei%20o%20demo%20do%20Digitai%20e%20quero%20saber%20mais!"
           target="_blank"
           rel="noopener noreferrer"
           className="mx-auto flex max-w-2xl items-center justify-between gap-3 p-2 -m-2 rounded-lg hover:bg-white/5 active:bg-white/10 transition-colors"

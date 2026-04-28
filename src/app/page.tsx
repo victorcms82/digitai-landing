@@ -334,7 +334,7 @@ export default function LandingPage() {
       {/* ═══ Footer ═══ */}
       <footer className="border-t border-digitai-border py-8 pb-20">
         <div className="mx-auto max-w-[1400px] px-6 text-center text-sm text-digitai-muted sm:px-16">
-          <p>&copy; 2025 Digitai — Evolute Digital. Todos os direitos reservados.</p>
+          <p>&copy; 2026 Digitai — Evolute Digital. Todos os direitos reservados.</p>
         </div>
       </footer>
 

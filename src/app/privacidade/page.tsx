@@ -3,9 +3,9 @@ import Link from "next/link"
 import { ArrowLeft, Mail } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade — DigitAI",
+  title: "Política de Privacidade — Digitai",
   description:
-    "Política de Privacidade da Evolute Digital. Saiba como a DigitAI coleta, utiliza e protege os dados pessoais tratados pelos nossos agentes de inteligência artificial, em conformidade com a LGPD.",
+    "Política de Privacidade da Evolute Digital. Saiba como a Digitai coleta, utiliza e protege os dados pessoais tratados pelos nossos agentes de inteligência artificial, em conformidade com a LGPD.",
   robots: { index: true, follow: true },
 }
 
@@ -49,7 +49,7 @@ export default function PrivacidadePage() {
               pessoais dos seus usuários. Esta Política de Privacidade descreve
               como coletamos, utilizamos, armazenamos e protegemos as
               informações obtidas durante a interação com os agentes de
-              inteligência artificial da plataforma DigitAI.
+              inteligência artificial da plataforma Digitai.
             </p>
             <p className="mt-4">
               Ao utilizar nossos serviços, você concorda com as práticas
@@ -64,7 +64,7 @@ export default function PrivacidadePage() {
               1. Controladora dos dados
             </h2>
             <p>
-              Os dados pessoais tratados pelos agentes da DigitAI são
+              Os dados pessoais tratados pelos agentes da Digitai são
               controlados por:
             </p>
             <div className="mt-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
@@ -120,7 +120,7 @@ export default function PrivacidadePage() {
               Os dados coletados são utilizados para as seguintes finalidades:
             </p>
             <ul className="mt-4 space-y-2 pl-5 list-disc marker:text-blue-500">
-              <li>Atendimento demonstrativo por meio da plataforma DigitAI</li>
+              <li>Atendimento demonstrativo por meio da plataforma Digitai</li>
               <li>Agendamento de serviços, consultas e reuniões</li>
               <li>Envio de documentos, propostas e orçamentos</li>
               <li>Suporte ao cliente e acompanhamento pós-atendimento</li>
@@ -311,7 +311,7 @@ export default function PrivacidadePage() {
       {/* Footer */}
       <footer className="border-t border-slate-800 py-6 sm:py-8 mt-8 pb-20">
         <div className="container mx-auto px-4 text-center text-xs sm:text-sm text-slate-500">
-          <p>&copy; 2026 DigitAI — Evolute Digital. Todos os direitos reservados.</p>
+          <p>&copy; 2026 Digitai — Evolute Digital. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
